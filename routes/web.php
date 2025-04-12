@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SesiKonselingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +43,9 @@ Route::post('/sesi_konseling_post', [App\Http\Controllers\WebsiteController::cla
 
 
 // Route Admin
+Route::group(['middleware' => ['is_admin']], function () {
+    Route::get('/admin/dashboard', [DashboardController::class, 'index']);
+
+    Route::get('admin/sesi_konseling', [SesiKonselingController::class, 'index']);
+
+});
