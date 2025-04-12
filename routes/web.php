@@ -47,5 +47,10 @@ Route::group(['middleware' => ['is_admin']], function () {
     Route::get('/admin/dashboard', [DashboardController::class, 'index']);
 
     Route::get('admin/sesi_konseling', [SesiKonselingController::class, 'index']);
+    Route::post('admin/sesi_konseling/create', [SesiKonselingController::class, 'store']);
+    Route::get('admin/sesi_konseling/detail/{id}', [SesiKonselingController::class, 'show']);
+    Route::get('admin/sesi_konseling/edit/{id}', [SesiKonselingController::class, 'edit']);
+    Route::post('admin/sesi_konseling/update/{id}', [SesiKonselingController::class, 'update']);
+    Route::get('admin/sesi_konseling/destroy/{id}', [SesiKonselingController::class, 'destroy']);
 
 });
