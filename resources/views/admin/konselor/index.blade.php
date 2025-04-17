@@ -123,3 +123,159 @@
       </div>
     </div>
   </div>
+
+  <div class="modal fade" id="editModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Data konselor</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="editForm" >
+            <input readonly type="hidden" class="form-control" id="edit_id" name="edit_id">
+            <div class="col-12">
+              <label for="yourUsername" class="form-label">User <span style="font-size: 12px">*(Yang Tampil Hanya Status Konselor, jangan pilih yang sudah ada / sudah di inputkan)</span> 
+              </label>
+              <div class="input-group has-validation">
+                <select name="user_id" id="edit_user_id" required class="form-control">
+                  <option selected readonly  style="text-align:center">-- silahkan pilih user --</option>
+                  @foreach ($user as $value)
+                        <option value="{{ $value->id }}">{{ $value->name }}</option>
+                  @endforeach                             
+                </select>
+              </div>
+            </div>    
+            <div class="col-12">
+              <img id="preview_edit_gambar"
+              style="width: 250px; height: auto;margin-top:10px;">
+            </div>
+            <div class="col-12">
+              <label for="yourUsername" class="form-label">Gambar</label>
+              <div class="input-group has-validation">
+                <input type="file" class="form-control" id="edit_gambar" onchange="previewImageEdit()" >
+              </div>
+            </div>   
+            <div class="col-12">
+              <label for="yourUsername" class="form-label">nip</label>
+              <div class="input-group has-validation">
+                <input type="number" class="form-control" id="edit_nip" required>
+              </div>
+            </div> 
+            <div class="col-12">
+              <label for="yourUsername" class="form-label">no telepon</label>
+              <div class="input-group has-validation">
+                <input type="number" class="form-control" id="edit_no_telepon" required>
+              </div>
+            </div> 
+            <div class="col-12">
+              <label for="yourUsername" class="form-label">deskripsi</label>
+              <div class="input-group has-validation">
+                <textarea rows="6" class="form-control" id="edit_deskripsi" required></textarea>
+              </div>
+            </div> 
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="detailModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">detail Data konselor</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="detailForm" >
+            <input readonly type="hidden" class="form-control" id="detail_id" name="detail_id">
+            <div class="col-12">
+              <label for="yourUsername" class="form-label">Nama User 
+              </label>
+              <div class="input-group has-validation">                
+                <input readonly  type="text" class="form-control" id="detail_user_nama" required>
+              </div>
+            </div> 
+            <div class="col-12">
+              <label for="yourUsername" class="form-label">email 
+              </label>
+              <div class="input-group has-validation">                
+                <input readonly  type="text" class="form-control" id="detail_user_email" required>
+              </div>
+            </div>    
+            <div class="col-12">
+              <label for="yourUsername" class="form-label">Gambar</label>
+              <img id="preview_detail_gambar"
+              style="width: 250px; height: auto;margin-top:10px;">
+            </div>
+            <div class="col-12">
+              <label for="yourUsername" class="form-label">nip</label>
+              <div class="input-group has-validation">
+                <input readonly  type="number" class="form-control" id="detail_nip" required>
+              </div>
+            </div> 
+            <div class="col-12">
+              <label for="yourUsername" class="form-label">no telepon</label>
+              <div class="input-group has-validation">
+                <input readonly  type="number" class="form-control" id="detail_no_telepon" required>
+              </div>
+            </div> 
+            <div class="col-12">
+              <label for="yourUsername" class="form-label">deskripsi</label>
+              <div class="input-group has-validation">
+                <textarea rows="6" readonly  class="form-control" id="detail_deskripsi" required></textarea>
+              </div>
+            </div> 
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              {{-- <button type="submit" class="btn btn-primary">Save changes</button> --}}
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    function previewImage() {
+        var input = document.getElementById('gambar');
+        var preview = document.getElementById('preview');
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+   
+    function previewImageEdit() {
+        var input = document.getElementById('edit_gambar');
+        var preview = document.getElementById('preview_edit_gambar');
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+        }
+</script>
+
+
