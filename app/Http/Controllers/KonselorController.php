@@ -51,5 +51,43 @@ class KonselorController extends Controller
         $data = Konselor::find($id);
         return response()->json($data);
     }
+    public function update($id, Request $request)
+    {
+        $konselor = Konselor::findOrFail($id); 
 
+
+        $validatedData = $request->validate([
+            'user_id' => 'required',
+            'nip' => 'required',
+            'no_telepon' => 'required',
+            'deskripsi' => 'required',
+            'gambar' => 'nullable|image',
+        ]);
+
+        if ($request->deskripsi) {
+            $validatedData['deskripsi'] = nl2br($request->deskripsi);
+        }
+
+        if ($request->hasFile('gambar')) {
+            if ($konselor->gambar) {
+                Storage::delete($konselor->gambar);
+            }
+            $validatedData['gambar'] = $request->file('gambar')->store('img-foto-konselor');
+        }
+
+        $konselor->update($validatedData);
+
+        return response()->json(['message' => 'Data Updated successfully']);
+    }
+
+    
+    public function destroy($id)
+    {
+        $konselor = Konselor::find($id);
+        if ($konselor->gambar) {
+            Storage::delete($konselor->gambar);
+        }
+        $konselor->delete();
+        return response()->json(['message' => 'Data deleted successfully']);
+    }
 }
