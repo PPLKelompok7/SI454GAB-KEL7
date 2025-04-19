@@ -242,3 +242,162 @@
       </div>
     </div>
   </div>
+
+
+  <script>
+    function previewImage() {
+        var input = document.getElementById('gambar');
+        var preview = document.getElementById('preview');
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+   
+    function previewImageEdit() {
+        var input = document.getElementById('edit_gambar');
+        var preview = document.getElementById('preview_edit_gambar');
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+        }
+</script>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+        $("#createForm").submit(function(event) {
+            event.preventDefault();
+            var formData = new FormData();
+            formData.append("_token", "{{ csrf_token() }}");
+            formData.append("user_id", $("#user_id").val());
+            formData.append("nip", $("#nip").val());
+            formData.append("no_telepon", $("#no_telepon").val());
+            formData.append("deskripsi", $("#deskripsi").val());
+            formData.append("gambar", $("#gambar")[0].files[0]);
+            $.ajax({
+                url: '{{ url('admin/konselor/create') }}',
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    alert(response.message);
+                    location.reload();
+                },
+                error: function(xhr) {
+                    console.log(xhr.responseText);
+                }
+            });
+        });
+
+        $(document).on('click', '.detail-button', function(event) {
+            event.preventDefault();
+            var id = $(this).data('id');
+            $.ajax({
+                url: '{{ url('admin/konselor/detail') }}/' + id,
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                     $('#detail_id').val(data.id);
+                     $("#detail_user_nama").val(data.user.name);
+                     $("#detail_user_email").val(data.user.email);
+                     $("#detail_nip").val(data.nip);
+                     $("#detail_no_telepon").val(data.no_telepon);
+                     $("#detail_deskripsi").val(data.deskripsi);
+                     $("#preview_detail_gambar").attr('src', '{{ asset('storage') }}' + '/' + data.gambar);
+                    },
+                error: function(xhr) {
+                    console.log(xhr.responseText);
+                }
+            });
+        }); 
+        $(document).on('click', '.edit-button', function(event) {
+            event.preventDefault();
+            var id = $(this).data('id');
+            $.ajax({
+                url: '{{ url('admin/konselor/edit') }}/' + id,
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                     $('#edit_id').val(data.id);
+                     $("#edit_user_id").val(data.user_id);
+                     $("#edit_nip").val(data.nip);
+                     $("#edit_no_telepon").val(data.no_telepon);
+                     $("#edit_deskripsi").val(data.deskripsi);
+                     $("#preview_edit_gambar").attr('src', '{{ asset('storage') }}' + '/' + data.gambar);
+                    },
+                error: function(xhr) {
+                    console.log(xhr.responseText);
+                }
+            });
+        });    
+        $("#editForm").submit(function(event) {
+            event.preventDefault();
+            var id = $('#edit_id').val();
+            var formData = new FormData();
+            formData.append("_token", "{{ csrf_token() }}");
+            formData.append("user_id", $("#edit_user_id").val());
+            formData.append("nip", $("#edit_nip").val());
+            formData.append("no_telepon", $("#edit_no_telepon").val());
+            formData.append("deskripsi", $("#edit_deskripsi").val());
+            var fileInput = document.getElementById('edit_gambar');
+                if (fileInput.files.length > 0) {
+                    formData.append("gambar", fileInput.files[0]);
+                }
+
+            $.ajax({
+                url: '{{ url('admin/konselor/update') }}/' + id,
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    alert(response.message);
+                    location.reload();
+                },
+                error: function(xhr) {
+                    console.log(xhr.responseText);
+                }
+            });
+        });
+        $(document).on('click', '.delete', function(event) {
+            event.preventDefault();
+            var id = $(this).data('id');
+            if (confirm("Apakah Anda yakin ingin menghapus data ini?")) {
+                $.ajax({
+                    url: '{{ url('admin/konselor/destroy') }}/' + id,
+                    type: 'get',
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    success: function(response) {
+                        alert(response.message);
+                        location.reload();
+                    },
+                    error: function(xhr) {
+                        console.log(xhr.responseText);
+                    }
+                });
+            }
+        });
+    });
+</script>
+@endsection
