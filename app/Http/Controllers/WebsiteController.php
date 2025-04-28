@@ -70,4 +70,8 @@ class WebsiteController extends Controller
         return redirect('/')->with('success', 'Pendaftaran konseling berhasil ditambahkan!');
    
     }
+
+    public function show_article() {
+        // return view 
+    }
 }
