@@ -360,6 +360,13 @@
               <span>Pendaftaran Sesi Konseling Anda</span>
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link @if (!request()->is('mahasiswa/diary')) collapsed @endif"
+              href="{{ url('mahasiswa/diary') }}">
+              <i class="bi bi-diagram-3"></i>
+              <span>Diary</span>
+          </a>
+        </li>
         @endif
 
 
