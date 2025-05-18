@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -49,35 +50,49 @@ class ArticleController extends Controller
         return view('admin.articles.article-edit', compact('article'));
     }
 
-    public function update(Request $request, $id)
-{
-    $request->validate([
-        'judul'   => 'required|string|max:255',
-        'penulis' => 'required|string|max:255',
-        'isi'     => 'required|string',
-        'gambar'  => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-    ]);
+    public function update(Request $request, $id) {
+        $request->validate([
+            'judul'   => 'required|string|max:255',
+            'penulis' => 'required|string|max:255',
+            'isi'     => 'required|string',
+            'gambar'  => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
 
-    $article = Article::findOrFail($id);
+        $article = Article::findOrFail($id);
 
-    // Jika gambar baru diunggah
-    if ($request->hasFile('gambar')) {
-        // Hapus gambar lama jika ada
-        if ($article->gambar && file_exists(public_path('storage/artikel/' . $article->gambar))) {
-            unlink(public_path('storage/artikel/' . $article->gambar));
+        // Jika gambar baru diunggah
+        if ($request->hasFile('gambar')) {
+            // Hapus gambar lama jika ada
+            if ($article->gambar && file_exists(public_path('storage/artikel/' . $article->gambar))) {
+                unlink(public_path('storage/artikel/' . $article->gambar));
+            }
+
+            $file = $request->file('gambar');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('storage/artikel/'), $filename);
+            $article->gambar = $filename;
         }
 
-        $file = $request->file('gambar');
-        $filename = time() . '_' . $file->getClientOriginalName();
-        $file->move(public_path('storage/artikel/'), $filename);
-        $article->gambar = $filename;
+        $article->judul   = $request->judul;
+        $article->penulis = $request->penulis;
+        $article->isi     = $request->isi;
+        $article->save();
+
+        return redirect()->route('article.index')->with('success', 'Artikel berhasil diperbarui');
     }
 
-    $article->judul   = $request->judul;
-    $article->penulis = $request->penulis;
-    $article->isi     = $request->isi;
-    $article->save();
+    public function destroy($id)
+{
+    $article = Article::findOrFail($id);
 
-    return redirect()->route('article.index')->with('success', 'Artikel berhasil diperbarui');
+    // Hapus gambar jika ada
+    if ($article->gambar && Storage::exists('public/gambar/' . $article->gambar)) {
+        Storage::delete('public/gambar/' . $article->gambar);
+    }
+
+    $article->delete();
+
+    return redirect()->route('article.index')->with('success', 'Artikel berhasil dihapus.');
 }
+
 }

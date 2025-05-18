@@ -49,10 +49,13 @@
                             <a href="{{ route('article.edit', $article->id) }}" class="btn btn-sm btn-info">
                             <i class="bi bi-pencil"></i> Edit
                             </a>
-                            <a href="{{ url('admin/article/' . $article->id . '/delete') }}" class="btn btn-sm btn-danger"
-                            onclick="return confirm('Yakin ingin menghapus artikel ini?')">
-                            <i class="bi bi-trash"></i> Hapus
-                            </a>
+                            <form action="{{ route('article.destroy', $article->id) }}" method="POST" class="d-inline delete-form">
+                            @csrf
+                            @method('DELETE')
+                            <button type="button" class="btn btn-sm btn-danger delete-button">
+                                <i class="bi bi-trash"></i> Hapus
+                            </button>
+                            </form>
                         </td>
                         </tr>
                     @endforeach
@@ -223,4 +226,32 @@
         });
     });
 </script> --}}
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const deleteButtons = document.querySelectorAll(".delete-button");
+
+    deleteButtons.forEach(button => {
+      button.addEventListener("click", function () {
+        const form = this.closest("form");
+        Swal.fire({
+          title: 'Yakin ingin menghapus?',
+          text: "Data tidak bisa dikembalikan!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#d33',
+          cancelButtonColor: '#6c757d',
+          confirmButtonText: 'Ya, hapus!',
+          cancelButtonText: 'Batal'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            form.submit();
+          }
+        });
+      });
+    });
+  });
+</script>
+
 @endsection
