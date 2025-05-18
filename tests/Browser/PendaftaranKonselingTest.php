@@ -39,7 +39,7 @@ class PendaftaranKonselingTest extends DuskTestCase
                 ->type('password', '123456')
                 ->press('Login')
                 ->assertPathIs('/')
-                ->visit('/sesi_konseling/' . $sesi->id)
+                ->visit('sesi_konseling' . $sesi->id)
                 ->type('nim', '12345678')
                 ->type('jurusan', 'Sistem Informasi')
                 ->type('fakulitas', 'FRI')
