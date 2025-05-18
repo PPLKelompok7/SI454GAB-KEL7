@@ -1,8 +1,10 @@
 <?php
 
+use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\KonselorController;
 use App\Http\Controllers\RegisterController;
@@ -104,6 +106,7 @@ Route::group(['middleware' => ['is_admin']], function () {
 
     Route::get('/admin/laporan', [DashboardController::class, 'laporan']);
     Route::get('/admin/laporan/export/{id}', [DashboardController::class, 'laporan_export']);
-
+    
+    Route::get('admin/article', [ArticleController::class, 'index'])->name('article.index');
 
 });

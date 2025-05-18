@@ -310,7 +310,14 @@
                     <i class="ri ri-user-3-line"></i>
                     <span>Data User</span>
                 </a>
-            </li>                     
+            </li>       
+            <li class="nav-item">
+                <a class="nav-link @if (!request()->is('admin/article')) collapsed @endif"
+                    href="{{ url('admin/article') }}">
+                    <i class="ri ri-newspaper-fill"></i>
+                    <span>Artikel</span>
+                </a>
+            </li>              
 
             <li class="nav-heading">Laporan</li>
             <li class="nav-item">

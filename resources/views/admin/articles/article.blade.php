@@ -16,50 +16,47 @@
     <div class="card recent-sales overflow-auto">
         <div class="card-body">
             <h5 class="card-title">Data Artikel <span>| Tambahkan Data</span></h5>
-            <a href="{{ route('admin.artikel.create') }}" class="btn btn-success">
+            {{-- <a href="{{ route('admin.artikel.create') }}" class="btn btn-success">
                 Tambah Data
-            </a>
+            </a> --}}
             <table class="table table-borderless datatable">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Judul</th>                         
                         <th scope="col">Penulis</th>                         
-                        <th scope="col">Email</th>                         
                         <th scope="col">Gambar</th>                         
                         <th scope="col">Action</th>                         
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($artikel as $item)                
-                    <tr>
-                        <th scope="row">{{ $loop->iteration }}</th>     
-                        <td>{{ $item->judul }}</td>                      
-                        <td>{{ $item->user->name ?? '-' }}</td>                      
-                        <td>{{ $item->user->email ?? '-' }}</td>                      
+                    @foreach ($articles as $article)
+                        <tr>
+                        <th scope="row">{{ $loop->iteration }}</th>
+                        <td>{{ $article->judul }}</td>
+                        <td>{{ $article->penulis }}</td>
                         <td>
-                            @if($item->gambar)
-                                <img src="{{ asset('storage/'.$item->gambar) }}" alt="gambar artikel" style="width: 120px">
+                            @if ($article->gambar)
+                            <img src="{{ asset('storage/' . $article->gambar) }}" alt="gambar artikel" style="width: 120px">
                             @else
-                                <span class="text-muted">Tidak ada gambar</span>
+                            Tidak ada gambar
                             @endif
-                        </td>    
+                        </td>
                         <td>
-                            <a href="{{ route('admin.artikel.show', $item->id) }}" class="btn btn-sm btn-primary">
-                                <i class="bi bi-eye"></i> Detail
+                            <a href="{{ url('admin/article/' . $article->id) }}" class="btn btn-sm btn-primary">
+                            <i class="bi bi-eye"></i> Detail
                             </a>
-                            <a href="{{ route('admin.artikel.edit', $item->id) }}" class="btn btn-sm btn-info">
-                                <i class="bi bi-pencil"></i> Edit
+                            <a href="{{ url('admin/article/' . $article->id . '/edit') }}" class="btn btn-sm btn-info">
+                            <i class="bi bi-pencil"></i> Edit
                             </a>
-                            <a href="{{ route('admin.artikel.delete', $item->id) }}" 
-                               class="btn btn-sm btn-danger"
-                               onclick="return confirm('Yakin ingin menghapus artikel ini?')">
-                                <i class="bi bi-trash"></i> Hapus
+                            <a href="{{ url('admin/article/' . $article->id . '/delete') }}" class="btn btn-sm btn-danger"
+                            onclick="return confirm('Yakin ingin menghapus artikel ini?')">
+                            <i class="bi bi-trash"></i> Hapus
                             </a>
                         </td>
-                    </tr> 
+                        </tr>
                     @endforeach
-                </tbody>
+                    </tbody>
             </table>
         </div>
     </div>
