@@ -48,4 +48,36 @@ class ArticleController extends Controller
         $article = Article::findOrFail($id);
         return view('admin.articles.article-edit', compact('article'));
     }
+
+    public function update(Request $request, $id)
+{
+    $request->validate([
+        'judul'   => 'required|string|max:255',
+        'penulis' => 'required|string|max:255',
+        'isi'     => 'required|string',
+        'gambar'  => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
+
+    $article = Article::findOrFail($id);
+
+    // Jika gambar baru diunggah
+    if ($request->hasFile('gambar')) {
+        // Hapus gambar lama jika ada
+        if ($article->gambar && file_exists(public_path('storage/artikel/' . $article->gambar))) {
+            unlink(public_path('storage/artikel/' . $article->gambar));
+        }
+
+        $file = $request->file('gambar');
+        $filename = time() . '_' . $file->getClientOriginalName();
+        $file->move(public_path('storage/artikel/'), $filename);
+        $article->gambar = $filename;
+    }
+
+    $article->judul   = $request->judul;
+    $article->penulis = $request->penulis;
+    $article->isi     = $request->isi;
+    $article->save();
+
+    return redirect()->route('article.index')->with('success', 'Artikel berhasil diperbarui');
+}
 }

@@ -8,8 +8,10 @@
         <h5>Form Edit Artikel</h5>
       </div>
 
-      <form action="{{ url('/admin/article-update/' . $article->id) }}" method="POST" enctype="multipart/form-data">
+      <form action="{{ route('article.update', $article->id) }}" method="POST" enctype="multipart/form-data">
+
         @csrf
+        @method('PUT')
 
         <div class="row">
           <div class="col-lg-6">
