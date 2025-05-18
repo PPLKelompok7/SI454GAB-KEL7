@@ -11,4 +11,8 @@ class ArticleController extends Controller
         $articles = Article::all();
         return view('admin.articles.article', ['articles' => $articles]);
     } 
+
+    public function add() {
+        return view('admin.articles.article-add');
+    }
 }

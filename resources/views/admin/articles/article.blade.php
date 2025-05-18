@@ -16,9 +16,9 @@
     <div class="card recent-sales overflow-auto">
         <div class="card-body">
             <h5 class="card-title">Data Artikel <span>| Tambahkan Data</span></h5>
-            {{-- <a href="{{ route('admin.artikel.create') }}" class="btn btn-success">
+            <a href="{{ route('article.add') }}" class="btn btn-success">
                 Tambah Data
-            </a> --}}
+            </a>
             <table class="table table-borderless datatable">
                 <thead>
                     <tr>
