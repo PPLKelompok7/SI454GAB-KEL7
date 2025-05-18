@@ -109,6 +109,9 @@ Route::group(['middleware' => ['is_admin']], function () {
     
     Route::get('admin/article', [ArticleController::class, 'index'])->name('article.index');
     Route::get('admin/article-add', [ArticleController::class, 'add'])->name('article.add');
-    Route::post('/admin/article-add', [ArticleController::class, 'store'])->name('article.store');
+    Route::post('admin/article-add', [ArticleController::class, 'store'])->name('article.store');
+    Route::get('admin/article/{id}/edit', [ArticleController::class, 'edit'])->name('article.edit');
+    
+
 
 });

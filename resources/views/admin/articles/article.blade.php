@@ -46,7 +46,7 @@
                             <a href="{{ url('admin/article/' . $article->id) }}" class="btn btn-sm btn-primary">
                             <i class="bi bi-eye"></i> Detail
                             </a>
-                            <a href="{{ url('admin/article/' . $article->id . '/edit') }}" class="btn btn-sm btn-info">
+                            <a href="{{ route('article.edit', $article->id) }}" class="btn btn-sm btn-info">
                             <i class="bi bi-pencil"></i> Edit
                             </a>
                             <a href="{{ url('admin/article/' . $article->id . '/delete') }}" class="btn btn-sm btn-danger"

@@ -17,30 +17,35 @@ class ArticleController extends Controller
     }
 
     public function store(Request $request)
-{
-    // Validasi input
-    $request->validate([
-        'judul'   => 'required|string|max:255',
-        'penulis' => 'required|string|max:255',
-        'isi'     => 'required|string',
-        'gambar'  => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
-    ]);
+    {
+        // Validasi input
+        $request->validate([
+            'judul'   => 'required|string|max:255',
+            'penulis' => 'required|string|max:255',
+            'isi'     => 'required|string',
+            'gambar'  => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
 
-    // Simpan gambar jika ada
-    $gambarPath = null;
-    if ($request->hasFile('gambar')) {
-        $gambarPath = $request->file('gambar')->store('artikel', 'public');
+        // Simpan gambar jika ada
+        $gambarPath = null;
+        if ($request->hasFile('gambar')) {
+            $gambarPath = $request->file('gambar')->store('artikel', 'public');
+        }
+
+        // Simpan data ke database
+        Article::create([
+            'judul'   => $request->judul,
+            'penulis' => $request->penulis,
+            'isi'     => $request->isi,
+            'gambar'  => $gambarPath,
+        ]);
+
+        // Redirect dengan pesan sukses
+        return redirect('/admin/article')->with('success', 'Artikel berhasil ditambahkan.');
     }
 
-    // Simpan data ke database
-    Article::create([
-        'judul'   => $request->judul,
-        'penulis' => $request->penulis,
-        'isi'     => $request->isi,
-        'gambar'  => $gambarPath,
-    ]);
-
-    // Redirect dengan pesan sukses
-    return redirect('/admin/article')->with('success', 'Artikel berhasil ditambahkan.');
-}
+    public function edit($id){
+        $article = Article::findOrFail($id);
+        return view('admin.articles.article-edit', compact('article'));
+    }
 }
