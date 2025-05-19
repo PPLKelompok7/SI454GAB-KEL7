@@ -10,6 +10,29 @@
             display: none;
         }
     }
+    .badge { cursor: pointer; }    
+    .dataTable-input {        
+        border: 1px solid black;
+    }        
+
+    .table td.judul-col,
+    .table td.penulis-col {
+        max-width: 150px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .table th.judul-col,
+    .table th.penulis-col {
+        max-width: 150px;
+    }
+
+    @media only screen and (max-width: 520px) {
+        .dataTable-dropdown {
+            display: none;
+        }
+    }
 </style>
 
 <div class="col-12">
@@ -23,8 +46,8 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Judul</th>                         
-                        <th scope="col">Penulis</th>                         
+                        <th scope="col" class="judul-col">Judul</th>                         
+                        <th scope="col" class="penulis-col">Penulis</th>                         
                         <th scope="col">Gambar</th>                         
                         <th scope="col">Action</th>                         
                     </tr>
@@ -33,8 +56,8 @@
                     @foreach ($articles as $article)
                         <tr>
                         <th scope="row">{{ $loop->iteration }}</th>
-                        <td>{{ $article->judul }}</td>
-                        <td>{{ $article->penulis }}</td>
+                        <td class="judul-col">{{ $article->judul }}</td>
+                        <td class="penulis-col">{{ $article->penulis }}</td>
                         <td>
                             @if ($article->gambar)
                             <img src="{{ asset('storage/' . $article->gambar) }}" alt="gambar artikel" style="width: 120px">

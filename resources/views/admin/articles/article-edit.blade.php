@@ -38,7 +38,7 @@
         <div class="form-group mt-3">
           <label for="gambar" class="form-label">Gambar Artikel:</label><br>
           @if($article->gambar)
-            <img src="{{ asset('storage/gambar/' . $article->gambar) }}" alt="Gambar" width="150" class="mb-2">
+            <img src="{{ asset('storage/' . $article->gambar) }}" alt="Gambar" width="150" class="mb-2">
           @endif
           <input type="file" class="form-control" name="gambar" id="gambar" accept="image/*">
           @error('gambar')
