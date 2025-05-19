@@ -43,9 +43,10 @@
                             @endif
                         </td>
                         <td>
-                            <a href="{{ url('admin/article/' . $article->id) }}" class="btn btn-sm btn-primary">
+                            <a href="{{ route('article.show', $article->id) }}" class="btn btn-sm btn-primary">
                             <i class="bi bi-eye"></i> Detail
                             </a>
+
                             <a href="{{ route('article.edit', $article->id) }}" class="btn btn-sm btn-info">
                             <i class="bi bi-pencil"></i> Edit
                             </a>

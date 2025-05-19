@@ -13,6 +13,12 @@ class ArticleController extends Controller
         return view('admin.articles.article', ['articles' => $articles]);
     } 
 
+    public function show($id) {
+        $article = Article::findOrFail($id);
+        return view('admin.articles.article-detail', compact('article'));
+    }
+
+
     public function add() {
         return view('admin.articles.article-add');
     }
@@ -81,18 +87,17 @@ class ArticleController extends Controller
         return redirect()->route('article.index')->with('success', 'Artikel berhasil diperbarui');
     }
 
-    public function destroy($id)
-{
-    $article = Article::findOrFail($id);
+    public function destroy($id) {
+        $article = Article::findOrFail($id);
 
-    // Hapus gambar jika ada
-    if ($article->gambar && Storage::exists('public/gambar/' . $article->gambar)) {
-        Storage::delete('public/gambar/' . $article->gambar);
+        // Hapus gambar jika ada
+        if ($article->gambar && Storage::exists('public/gambar/' . $article->gambar)) {
+            Storage::delete('public/gambar/' . $article->gambar);
+        }
+
+        $article->delete();
+
+        return redirect()->route('article.index')->with('success', 'Artikel berhasil dihapus.');
     }
-
-    $article->delete();
-
-    return redirect()->route('article.index')->with('success', 'Artikel berhasil dihapus.');
-}
 
 }

@@ -112,6 +112,7 @@ Route::group(['middleware' => ['is_admin']], function () {
     Route::post('admin/article-add', [ArticleController::class, 'store'])->name('article.store');
     Route::get('admin/article/{id}/edit', [ArticleController::class, 'edit'])->name('article.edit');
     Route::put('admin/article/{id}', [ArticleController::class, 'update'])->name('article.update');
-    Route::delete('/admin/article/{id}', [ArticleController::class, 'destroy'])->name('article.destroy');
+    Route::delete('admin/article/{id}', [ArticleController::class, 'destroy'])->name('article.destroy');
+    Route::get('admin/article/{id}', [ArticleController::class, 'show'])->name('article.show');
 
 });

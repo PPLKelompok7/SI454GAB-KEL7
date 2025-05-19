@@ -48,7 +48,7 @@
 
         <div class="form-group mt-3">
           <label for="isi" class="form-label">Isi Artikel:</label>
-          <textarea class="form-control" name="isi" id="isi" rows="7" required>{{ old('isi', $article->isi) }}</textarea>
+          <textarea class="form-control" name="isi" id="isi" rows="18" required>{{ old('isi', $article->isi) }}</textarea>
           @error('isi')
           <p class="text-danger text-xs pt-1">{{ $message }}</p>
           @enderror
