@@ -41,7 +41,11 @@ Route::get('/', [WebsiteController::class, 'index']);
 Route::get('/konselor', [WebsiteController::class, 'konselor']);
 Route::get('/sesi_konseling', [WebsiteController::class, 'sesi_konseling']);
 Route::get('/sesi_konseling/{id}', [WebsiteController::class, 'sesi_konseling_detail']);
-Route::post('/sesi_konseling_post', [WebsiteController::class, 'sesi_konseling_post']);
+Route::post('/sesi_konseling_post', [WebsiteController::class, 'article']);
+
+//article
+Route::get('/article', [WebsiteController::class, 'article']);
+Route::get('/article/{id}', [WebsiteController::class, 'showArticle'])->name('website.article.detail');
 
 
 // Route Mahasiswa

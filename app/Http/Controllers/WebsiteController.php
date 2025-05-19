@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Konselor;
-use App\Models\PendaftaranKonseling;
-use App\Models\SesiKonseling;
 use App\Models\User;
+use App\Models\Article;
+use App\Models\Konselor;
 use Illuminate\Http\Request;
+use App\Models\SesiKonseling;
+use App\Models\PendaftaranKonseling;
 
 class WebsiteController extends Controller
 {
@@ -71,7 +72,20 @@ class WebsiteController extends Controller
    
     }
 
-    public function show_article() {
-        // return view 
+    
+    // public function article() {
+    //     $articles = Article::all(); // Ambil semua data artikel
+    //     return view('website.article-list', compact('articles'));
+    // }
+
+    public function article() {
+        $articles = Article::latest()->get();
+        return view('website.article-list', compact('articles'));
     }
+
+    public function showArticle($id) {
+        $article = Article::findOrFail($id);
+        return view('website.article-detail-content', compact('article'));
+    }
+
 }
