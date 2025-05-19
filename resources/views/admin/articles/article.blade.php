@@ -255,4 +255,17 @@
   });
 </script>
 
+@if(session('success'))
+<script>
+  Swal.fire({
+    icon: 'success',
+    title: 'Berhasil!',
+    text: '{{ session("success") }}',
+    showConfirmButton: true,
+    confirmButtonText: "OK", // Label tombol
+    confirmButtonColor: "#3085d6"
+  });
+</script>
+@endif
+
 @endsection
