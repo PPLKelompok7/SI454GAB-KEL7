@@ -118,5 +118,4 @@ Route::group(['middleware' => ['is_admin']], function () {
     Route::put('admin/article/{id}', [ArticleController::class, 'update'])->name('article.update');
     Route::delete('admin/article/{id}', [ArticleController::class, 'destroy'])->name('article.destroy');
     Route::get('admin/article/{id}', [ArticleController::class, 'show'])->name('article.show');
-
 });
