@@ -11,7 +11,7 @@ class Webinar extends Model
 
     protected $guarded = ['id'];
 
-    public function use()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
