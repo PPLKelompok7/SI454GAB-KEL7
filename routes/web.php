@@ -9,6 +9,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SesiKonselingController;
 use App\Http\Controllers\PendaftaranKonselingController;
+use App\Http\Controllers\WebinarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -105,5 +106,8 @@ Route::group(['middleware' => ['is_admin']], function () {
     Route::get('/admin/laporan', [DashboardController::class, 'laporan']);
     Route::get('/admin/laporan/export/{id}', [DashboardController::class, 'laporan_export']);
 
-
+    Route::get('admin/webinar', [WebinarController::class, 'index']);
+    Route::post('admin/webinar/store', [WebinarController::class, 'store'])->name('webinars.store');
+    Route::put('admin/webinar/update/{id}', [WebinarController::class, 'update'])->name('webinars.update');
+    Route::delete('admin/webinar/delete/{id}', [WebinarController::class, 'destroy'])->name('webinars.destroy');
 });
