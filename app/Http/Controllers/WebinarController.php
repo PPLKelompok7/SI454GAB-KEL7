@@ -17,11 +17,6 @@ class WebinarController extends Controller
         return view('admin.webinar.index', compact('konselor', 'user', 'webinars'));
     }
 
-    public function create()
-    {
-
-    }
-
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -44,6 +39,44 @@ class WebinarController extends Controller
             'message' => 'Webinar berhasil ditambahkan.',
             'data' => $webinar
         ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'nama' => 'required|string',
+            'gambar' => 'nullable|image',
+            'user_id' => 'required|exists:users,id',
+            'tanggal' => 'required|date',
+            'jam' => 'required|regex:/^\d{2}:\d{2}-\d{2}:\d{2}$/',
+            'deskripsi' => 'required|string',
+        ]);
+
+        $webinar = Webinar::findOrFail($id);
+
+        if ($request->hasFile('gambar')) {
+            $path = $request->file('gambar')->store('webinars', 'public');
+            $validated['gambar'] = $path;
+        }
+
+        $webinar->update($validated);
+
+        return response()->json([
+            'message' => 'Webinar berhasil diupdate.',
+            'data' => $webinar
+        ]);
+    }
+
+    public function destroy($id)
+    {
+        $webinar = Webinar::find($id);
+        if (!$webinar) {
+            return response()->json(['message' => 'Webinar tidak ditemukan'], 404);
+        }
+
+        $webinar->delete();
+
+        return response()->json(['message' => 'Webinar berhasil dihapus']);
     }
 
 }
