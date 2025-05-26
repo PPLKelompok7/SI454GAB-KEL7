@@ -77,6 +77,7 @@
                     <a href="{{ url('/') }}" class="nav-item nav-link {{ Request::is('/') ? 'active' : '' }}">Home</a>
                     <a href="{{ url('/konselor') }}" class="nav-item nav-link {{ Request::is('konselor') ? 'active' : '' }}">Konselor</a>
                     <a href="{{ url('/sesi_konseling') }}" class="nav-item nav-link {{ Request::is('sesi_konseling') ? 'active' : '' }}">sesi konseling</a>
+                    <a href="{{ url('/article') }}" class="nav-item nav-link {{ Request::is('article') ? 'active' : '' }}">Artikel</a>
 
 
                     @auth
