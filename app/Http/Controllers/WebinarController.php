@@ -17,6 +17,15 @@ class WebinarController extends Controller
         return view('admin.webinar.index', compact('konselor', 'user', 'webinars'));
     }
 
+    public function show($id)
+    {
+        $webinar = Webinar::findOrFail($id);
+        $konselor = Konselor::get();
+
+        return view('webinar.detail', compact('webinar', 'konselor'));
+    }
+
+
     public function store(Request $request)
     {
         $validated = $request->validate([
