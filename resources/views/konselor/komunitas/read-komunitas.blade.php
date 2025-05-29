@@ -81,7 +81,7 @@
                     <div class="bg-white rounded-2xl p-4 mb-4">
                         <div class="flex flex-col space-y-1">
                             <div class="flex justify-between text-sm">
-                                <span class="font-semibold">{{ $item->user->name }}</span>
+                                <span class="font-semibold">{{ $item->user->name }} | {{ $item->user->is_role }}</span>
                                 <span class="float-end">{{ $item->created_at }}</span>
                             </div>
                             <p class="text-gray-700 mt-2">
