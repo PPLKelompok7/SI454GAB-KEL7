@@ -504,6 +504,22 @@
     </div>
     <!-- Team End -->
 
+    <!-- Webinar Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h1 class="display-5 mb-5">Webinar</h1>
+            </div>
+            <div class="owl-carousel testimonial-carousel wow  fadeInUp" data-wow-delay="0.3s">
+                @foreach ($webinar as $value)
+                    <div>
+                        <x-webinar-card :webinar="$value" :konselor="$konselor" :is-home="true" />
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    <!-- Webinar End -->
 
     <!-- Testimonial Start -->
     {{-- <div class="container-xxl py-5">

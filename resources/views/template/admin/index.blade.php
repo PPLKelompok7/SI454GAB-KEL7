@@ -320,6 +320,14 @@
                     <span>Laporan</span>
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link @if (!request()->is('admin/webinar')) collapsed @endif"
+                    href="{{ url('admin/webinar') }}">
+                    <i class="bi bi-camera-reels"></i>
+                    <span>Webinar</span>
+                </a>
+            </li>            
         @elseif (auth()->user()->is_role == "Konselor")      
             <li class="nav-item">
                 <a class="nav-link @if (!request()->is('konselor/dashboard')) collapsed @endif"
