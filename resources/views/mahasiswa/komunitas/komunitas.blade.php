@@ -1,1 +1,0 @@
-mahasiswa itu read only
