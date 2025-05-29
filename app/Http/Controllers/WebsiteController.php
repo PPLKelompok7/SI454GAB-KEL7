@@ -6,6 +6,7 @@ use App\Models\Konselor;
 use App\Models\PendaftaranKonseling;
 use App\Models\SesiKonseling;
 use App\Models\User;
+use App\Models\Webinar;
 use Illuminate\Http\Request;
 
 class WebsiteController extends Controller
@@ -17,8 +18,9 @@ class WebsiteController extends Controller
         $total_selesai_konseling = PendaftaranKonseling::where('status',"Selesai")->count();
         $total_konselor = Konselor::count();
         $sesi_konseling = SesiKonseling::get();
+        $webinar = Webinar::get();
 
-        return view('website.index',compact('total_selesai_konseling','sesi_konseling','konselor','total_mahasiswa','total_konselor'));
+        return view('website.index',compact('total_selesai_konseling','sesi_konseling','konselor','total_mahasiswa','total_konselor', 'webinar'));
     }
 
     public function konselor()
@@ -69,9 +71,5 @@ class WebsiteController extends Controller
 
         return redirect('/')->with('success', 'Pendaftaran konseling berhasil ditambahkan!');
    
-    }
-
-    public function show_article() {
-        // return view 
     }
 }
