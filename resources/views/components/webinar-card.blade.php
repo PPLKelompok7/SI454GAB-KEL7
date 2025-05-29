@@ -13,7 +13,7 @@
     style="border: 1px solid #e0e0e0; min-height: 440px; display: flex; flex-direction: column; justify-content: space-between;">
     <div class="mb-3 text-center">
         <img src="{{ $image }}" alt='' onerror="this.src='{{ $fallbackImage }}';"
-            style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px;">
+            style="width: 100%; height: 200px; object-fit: contain; border-radius: 10px; background-color: #f8f9fa;">
     </div>
 
     <div class="my-4">

@@ -25,7 +25,7 @@
             <div class="d-flex flex-column flex-lg-row align-items-start gap-4">
                 <div class="w-100 w-lg-50 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                     <img src="{{ $image }}" alt='' onerror="this.src='{{ $fallbackImage }}';" class="img-fluid rounded"
-                        style="max-height: 400px; object-fit: cover; width: 100%;">
+                        style="width: 100%; height: auto;">
                 </div>
                 <div class="w-100 w-lg-50 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                     <p>{{ $webinar->deskripsi ?? 'Belum ada deskripsi' }}</p>
