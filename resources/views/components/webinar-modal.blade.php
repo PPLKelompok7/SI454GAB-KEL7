@@ -27,7 +27,7 @@
                         <select name="user_id" id="user_id" required class="form-control">
                             <option value="" disabled selected>-- Silahkan Pilih Pembicara --</option>
                             @foreach ($konselor as $value)
-                                <option value="{{ $value->id }}">{{ $value->user->name }}</option>
+                                <option value="{{ $value->user_id }}">{{ $value->user->name }}</option>
                             @endforeach
                         </select>
                     </div>
