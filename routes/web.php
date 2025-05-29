@@ -41,6 +41,8 @@ Route::get('/konselor', [WebsiteController::class, 'konselor']);
 Route::get('/sesi_konseling', [WebsiteController::class, 'sesi_konseling']);
 Route::get('/sesi_konseling/{id}', [WebsiteController::class, 'sesi_konseling_detail']);
 Route::post('/sesi_konseling_post', [WebsiteController::class, 'sesi_konseling_post']);
+Route::get('/webinar/{id}', action: [App\Http\Controllers\WebinarController::class, 'show'])->name('webinar.detail');
+
 
 
 // Route Mahasiswa
