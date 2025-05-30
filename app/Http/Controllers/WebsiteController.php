@@ -32,6 +32,26 @@ class WebsiteController extends Controller
     {
         $sesi_konseling = SesiKonseling::get();
         return view('website.sesi_konseling',compact('sesi_konseling'));
+
+        
+    }
+
+    public function search(Request $request)
+    {
+        $query = SesiKonseling::with('konselor.user');
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->whereHas('konselor.user', function($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%");
+            })
+            ->orWhere('hari', 'like', "%{$search}%")
+            ->orWhere('sesi', 'like', "%{$search}%");
+        }
+
+        $sesi_konseling = $query->get();
+
+        return view('website.sesi_konseling', compact('sesi_konseling'));
     }
 
     public function sesi_konseling_detail($id)

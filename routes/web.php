@@ -47,6 +47,10 @@ Route::post('/sesi_konseling_post', [WebsiteController::class, 'article']);
 Route::get('/article', [WebsiteController::class, 'article']);
 Route::get('/article/{id}', [WebsiteController::class, 'showArticle'])->name('website.article.detail');
 
+//route search
+Route::get('/sesi_konseling', [WebsiteController::class, 'search']);
+
+
 
 // Route Mahasiswa
 Route::group(['middleware' => ['is_mahasiswa']], function () {
