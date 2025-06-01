@@ -361,7 +361,18 @@
                 <span>Pendaftaran Sesi Konseling Anda</span>
             </a>
           </li>
-
+          <li class="nav-item">
+              <a class="nav-link @if (
+                  !request()->is(
+                      'konselor-komunitas',
+                      'konselor-read-komunitas*',
+                      'konselor-tambah-komunitas',
+                      'konselor-edit-komunitas*')) collapsed @endif"
+                  href="{{ url('konselor-komunitas') }}">
+                  <i class="ri ri-newspaper-fill"></i>
+                  <span>Komunitas</span>
+              </a>
+          </li>
         @elseif (auth()->user()->is_role == "Mahasiswa")      
         <li class="nav-item">
           <a class="nav-link @if (!request()->is('mahasiswa/dashboard')) collapsed @endif"
