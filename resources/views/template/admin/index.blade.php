@@ -310,7 +310,14 @@
                     <i class="ri ri-user-3-line"></i>
                     <span>Data User</span>
                 </a>
-            </li>                     
+            </li>       
+            <li class="nav-item">
+                <a class="nav-link @if (!request()->is('admin/article')) collapsed @endif"
+                    href="{{ url('admin/article') }}">
+                    <i class="ri ri-newspaper-fill"></i>
+                    <span>Artikel</span>
+                </a>
+            </li>              
 
             <li class="nav-heading">Laporan</li>
             <li class="nav-item">
@@ -358,6 +365,13 @@
               href="{{ url('mahasiswa/pendaftaran_konseling') }}">
               <i class="bi bi-diagram-3"></i>
               <span>Pendaftaran Sesi Konseling Anda</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link @if (!request()->is('mahasiswa/diary')) collapsed @endif"
+              href="{{ url('mahasiswa/diary') }}">
+              <i class="bi bi-diagram-3"></i>
+              <span>Diary</span>
           </a>
         </li>
         @endif

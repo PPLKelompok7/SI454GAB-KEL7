@@ -39,10 +39,29 @@ Route::get('/login', [LoginController::class, 'index'])->name('login')->middlewa
 Route::post('/login_post', [LoginController::class, 'authenticate']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
+
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
 
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login_post', [LoginController::class, 'authenticate']);
+Route::get('/logout', [LoginController::class, 'logout']);
+
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store']);
+
+
+Route::get('/', [WebsiteController::class, 'index']);
+Route::get('/konselor', [WebsiteController::class, 'konselor']);
+Route::get('/sesi_konseling', [WebsiteController::class, 'sesi_konseling']);
+Route::get('/sesi_konseling/{id}', [WebsiteController::class, 'sesi_konseling_detail']);
+Route::post('/sesi_konseling_post', [WebsiteController::class, 'article']);
+
+
+//article
+Route::get('/article', [WebsiteController::class, 'article']);
+Route::get('/article/{id}', [WebsiteController::class, 'showArticle'])->name('website.article.detail');
 
 Route::get('/', [WebsiteController::class, 'index']);
 Route::get('/konselor', [WebsiteController::class, 'konselor']);
@@ -53,6 +72,10 @@ Route::post('/sesi_konseling_post', [WebsiteController::class, 'article']);
 //article
 Route::get('/article', [WebsiteController::class, 'article']);
 Route::get('/article/{id}', [WebsiteController::class, 'showArticle'])->name('website.article.detail');
+
+//route search
+Route::get('/sesi_konseling', [WebsiteController::class, 'search']);
+
 
 
 // Route Mahasiswa
@@ -69,11 +92,11 @@ Route::group(['middleware' => ['is_mahasiswa']], function () {
     Route::put('/mahasiswa/diary/{id}', [App\Http\Controllers\DiaryController::class, 'update'])->name('diary.update');
     Route::delete('/mahasiswa/diary/{id}', [App\Http\Controllers\DiaryController::class, 'destroy'])->name('diary.destroy');
 
+
     Route::get('mahasiswa-komunitas', [MahasiswaKomunitasController::class, 'komunitas'])->name('mahasiswa-komunitas');
     Route::get('mahasiswa-read-komunitas/{id_komunitas}', [MahasiswaKomunitasController::class, 'readKomunitas'])->name('mahasiswa-read-komunitas');
 
     Route::post('mahasiswa-do-komentar', [MahasiswaKomunitasController::class, 'doKomentar'])->name('mahasiswa-do-komentar');
-
 });
 
 
@@ -143,6 +166,7 @@ Route::group(['middleware' => ['is_admin']], function () {
     Route::delete('admin/article/{id}', [ArticleController::class, 'destroy'])->name('article.destroy');
     Route::get('admin/article/{id}', [ArticleController::class, 'show'])->name('article.show');
 
+
     Route::get('admin-komunitas', [KomunitasController::class, 'index'])->name('admin-komunitas');
     Route::get('admin-tambah-komunitas', [KomunitasController::class, 'tambahKomunitas'])->name('admin-tambah-komunitas');
     Route::get('admin-edit-komunitas/{id_komunitas}', [KomunitasController::class, 'editKomunitas'])->name('admin-edit-komunitas');
@@ -152,4 +176,5 @@ Route::group(['middleware' => ['is_admin']], function () {
 
     Route::post('admin-delete-komunitas', [KomunitasController::class, 'deleteKomunitas'])->name('admin-delete-komunitas');
     Route::get('admin-read-komunitas/{id_komunitas}', [KomunitasController::class, 'readKomunitas'])->name('admin-read-komunitas');
+
 });

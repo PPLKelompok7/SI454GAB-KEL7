@@ -33,7 +33,6 @@ class SesiKonselingController extends Controller
 
         return response()->json(['message' => 'Data created successfully']);
     }
-
     public function show($id)
     {
         $data = SesiKonseling::with('konselor.user')->find($id);
