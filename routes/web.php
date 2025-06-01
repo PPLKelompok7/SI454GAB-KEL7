@@ -58,8 +58,8 @@ Route::group(['middleware' => ['is_mahasiswa']], function () {
 
     Route::get('/mahasiswa/pendaftaran_konseling', [DashboardController::class, 'pendaftaran_konseling_mahasiswa_index']);
     Route::get('/mahasiswa/pendaftaran_konseling/detail/{id}', [DashboardController::class, 'pendaftaran_konseling_mahasiswa_show']);
-    Route::resource('feedback', FeedbackController::class)->middleware('auth');
-    Route::resource('izin', SuratIzinSakitController::class)->middleware('auth');
+    Route::resource('mahasiswa/feedback', FeedbackController::class)->middleware('auth');
+    Route::resource('mahasiswa/izin', SuratIzinSakitController::class)->middleware('auth');
     // Diary routes
     Route::get('/mahasiswa/diary', [App\Http\Controllers\DiaryController::class, 'index'])->name('diary.index');
     Route::post('/mahasiswa/diary', [App\Http\Controllers\DiaryController::class, 'store'])->name('diary.store');
