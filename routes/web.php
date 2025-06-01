@@ -13,6 +13,7 @@ use App\Http\Controllers\KomunitasController;
 use App\Http\Controllers\MahasiswaKomunitasController;
 use App\Http\Controllers\SesiKonselingController;
 use App\Http\Controllers\PendaftaranKonselingController;
+use App\Http\Controllers\WebinarController;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -56,6 +57,10 @@ Route::get('/', [WebsiteController::class, 'index']);
 Route::get('/konselor', [WebsiteController::class, 'konselor']);
 Route::get('/sesi_konseling', [WebsiteController::class, 'sesi_konseling']);
 Route::get('/sesi_konseling/{id}', [WebsiteController::class, 'sesi_konseling_detail']);
+
+Route::post('/sesi_konseling_post', [WebsiteController::class, 'sesi_konseling_post']);
+Route::get('/webinar/{id}', action: [App\Http\Controllers\WebinarController::class, 'show'])->name('webinar.detail');
+
 Route::post('/sesi_konseling_post', [WebsiteController::class, 'article']);
 
 
@@ -75,6 +80,7 @@ Route::get('/article/{id}', [WebsiteController::class, 'showArticle'])->name('we
 
 //route search
 Route::get('/sesi_konseling', [WebsiteController::class, 'search']);
+
 
 
 
@@ -174,7 +180,14 @@ Route::group(['middleware' => ['is_admin']], function () {
     Route::post('admin-store-komunitas', [KomunitasController::class, 'storeKomunitas'])->name('admin-store-komunitas');
     Route::post('admin-save-komunitas', [KomunitasController::class, 'saveKomunitas'])->name('admin-save-komunitas');
 
+
+    Route::get('admin/webinar', [WebinarController::class, 'index']);
+    Route::post('admin/webinar/store', [WebinarController::class, 'store'])->name('webinars.store');
+    Route::put('admin/webinar/update/{id}', [WebinarController::class, 'update'])->name('webinars.update');
+    Route::delete('admin/webinar/delete/{id}', [WebinarController::class, 'destroy'])->name('webinars.destroy');
+
     Route::post('admin-delete-komunitas', [KomunitasController::class, 'deleteKomunitas'])->name('admin-delete-komunitas');
     Route::get('admin-read-komunitas/{id_komunitas}', [KomunitasController::class, 'readKomunitas'])->name('admin-read-komunitas');
+
 
 });

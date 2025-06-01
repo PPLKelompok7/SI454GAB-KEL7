@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+
+use App\Models\Webinar;
+
 use App\Models\Article;
 use App\Models\Konselor;
+
 use Illuminate\Http\Request;
 use App\Models\SesiKonseling;
 use App\Models\PendaftaranKonseling;
@@ -18,8 +22,9 @@ class WebsiteController extends Controller
         $total_selesai_konseling = PendaftaranKonseling::where('status',"Selesai")->count();
         $total_konselor = Konselor::count();
         $sesi_konseling = SesiKonseling::get();
+        $webinar = Webinar::get();
 
-        return view('website.index',compact('total_selesai_konseling','sesi_konseling','konselor','total_mahasiswa','total_konselor'));
+        return view('website.index',compact('total_selesai_konseling','sesi_konseling','konselor','total_mahasiswa','total_konselor', 'webinar'));
     }
 
     public function konselor()
@@ -92,6 +97,8 @@ class WebsiteController extends Controller
    
     }
 
+
+
     
     // public function article() {
     //     $articles = Article::all(); // Ambil semua data artikel
@@ -107,5 +114,6 @@ class WebsiteController extends Controller
         $article = Article::findOrFail($id);
         return view('website.article-detail-content', compact('article'));
     }
+
 
 }
