@@ -14,7 +14,7 @@
                         <div class="container">
                             <div class="row justify-content-start">
                                 <div class="col-lg-8">
-                                    <p class="d-inline-block border border-white rounded text-danger fw-semi-bold py-1 px-3 animated slideInDown">Welcome to EmoWell</p>
+                                    <p class="d-inline-block border border-white rounded text-danger fw-semi-bold py-1 px-3 animated slideInDown">Welcome to konseling mahasiswa</p>
                                     <h1 class="display-3 mb-4 animated slideInDown">Konseling: Untuk Keseimbangan Akademik dan Kehidupan Pribadi</h1>
                                     {{-- <a href="{{url('/')}}" class="btn btn-danger py-3 px-5 animated slideInDown">Explore More</a> --}}
                                 </div>
@@ -28,7 +28,7 @@
                         <div class="container">
                             <div class="row justify-content-start">
                                 <div class="col-lg-7">
-                                    <p class="d-inline-block border border-white rounded text-danger fw-semi-bold py-1 px-3 animated slideInDown">Welcome to EmoWell</p>
+                                    <p class="d-inline-block border border-white rounded text-danger fw-semi-bold py-1 px-3 animated slideInDown">Welcome to konseling mahasiswa</p>
                                     <h1 class="display-3 mb-4 animated slideInDown">Konseling untuk Menyusun Rencana, <br> Mengatasi Kesulitan, dan Mencapai Sukses</h1>
                                 </div>
                             </div>
@@ -504,6 +504,22 @@
     </div>
     <!-- Team End -->
 
+    <!-- Webinar Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h1 class="display-5 mb-5">Webinar</h1>
+            </div>
+            <div class="owl-carousel testimonial-carousel wow  fadeInUp" data-wow-delay="0.3s">
+                @foreach ($webinar as $value)
+                    <div>
+                        <x-webinar-card :webinar="$value" :konselor="$konselor" :is-home="true" />
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    <!-- Webinar End -->
 
     <!-- Testimonial Start -->
     {{-- <div class="container-xxl py-5">

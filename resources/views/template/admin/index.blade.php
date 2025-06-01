@@ -8,7 +8,7 @@
     <title>Konseling Mahasiswa</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
         /* *{
             text-transform: capitalize;
@@ -16,6 +16,9 @@
     </style>
     <!-- Favicons -->
     {{-- <link href="{{asset('template_admin')}}/assets/img/favicon.png" rel="icon"> --}}
+    <!-- Font Awesome CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
     <link rel="shortcut icon" href="{{ asset('template-pinterest') }}/docs/assets/img/logo.png" type="image/x-icon">
 
     <link href="{{ asset('template_admin') }}/img/favicon.ico" rel="icon">
@@ -310,6 +313,7 @@
                     <i class="ri ri-user-3-line"></i>
                     <span>Data User</span>
                 </a>
+
             </li>       
             <li class="nav-item">
                 <a class="nav-link @if (!request()->is('admin/article')) collapsed @endif"
@@ -317,7 +321,14 @@
                     <i class="ri ri-newspaper-fill"></i>
                     <span>Artikel</span>
                 </a>
-            </li>              
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @if (!request()->is('admin-komunitas', 'admin-read-komunitas*', 'admin-tambah-komunitas', 'admin-edit-komunitas*')) collapsed @endif"
+                    href="{{ url('admin-komunitas') }}">
+                    <i class="ri ri-newspaper-fill"></i>
+                    <span>Komunitas</span>
+                </a>
+            </li>                    
 
             <li class="nav-heading">Laporan</li>
             <li class="nav-item">
@@ -327,6 +338,14 @@
                     <span>Laporan</span>
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link @if (!request()->is('admin/webinar')) collapsed @endif"
+                    href="{{ url('admin/webinar') }}">
+                    <i class="bi bi-camera-reels"></i>
+                    <span>Webinar</span>
+                </a>
+            </li>            
         @elseif (auth()->user()->is_role == "Konselor")      
             <li class="nav-item">
                 <a class="nav-link @if (!request()->is('konselor/dashboard')) collapsed @endif"
@@ -351,7 +370,18 @@
                 <span>Pendaftaran Sesi Konseling Anda</span>
             </a>
           </li>
-
+          <li class="nav-item">
+              <a class="nav-link @if (
+                  !request()->is(
+                      'konselor-komunitas',
+                      'konselor-read-komunitas*',
+                      'konselor-tambah-komunitas',
+                      'konselor-edit-komunitas*')) collapsed @endif"
+                  href="{{ url('konselor-komunitas') }}">
+                  <i class="ri ri-newspaper-fill"></i>
+                  <span>Komunitas</span>
+              </a>
+          </li>
         @elseif (auth()->user()->is_role == "Mahasiswa")      
         <li class="nav-item">
           <a class="nav-link @if (!request()->is('mahasiswa/dashboard')) collapsed @endif"
@@ -373,8 +403,21 @@
               <i class="bi bi-diagram-3"></i>
               <span>Diary</span>
           </a>
-        </li>
-        @endif
+      </li>
+      <li class="nav-item">
+          <a class="nav-link @if (
+              !request()->is(
+                  'mahasiswa-komunitas',
+                  'mahasiswa-read-komunitas*',
+                  'mahasiswa-tambah-komunitas',
+                  'mahasiswa-edit-komunitas*')) collapsed @endif"
+              href="{{ url('mahasiswa-komunitas') }}">
+              <i class="ri ri-newspaper-fill"></i>
+              <span>Komunitas</span>
+          </a>
+      </li>
+  </li>
+   @endif
 
 
 
