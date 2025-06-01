@@ -402,8 +402,21 @@
               <i class="bi bi-diagram-3"></i>
               <span>Diary</span>
           </a>
-        </li>
-        @endif
+      </li>
+      <li class="nav-item">
+          <a class="nav-link @if (
+              !request()->is(
+                  'mahasiswa-komunitas',
+                  'mahasiswa-read-komunitas*',
+                  'mahasiswa-tambah-komunitas',
+                  'mahasiswa-edit-komunitas*')) collapsed @endif"
+              href="{{ url('mahasiswa-komunitas') }}">
+              <i class="ri ri-newspaper-fill"></i>
+              <span>Komunitas</span>
+          </a>
+      </li>
+  </li>
+   @endif
 
 
 
