@@ -311,7 +311,13 @@
                     <span>Data User</span>
                 </a>
             </li>                     
-
+                <li class="nav-item">
+                    <a class="nav-link @if (!request()->is('admin-komunitas', 'admin-read-komunitas*', 'admin-tambah-komunitas', 'admin-edit-komunitas*')) collapsed @endif"
+                        href="{{ url('admin-komunitas') }}">
+                        <i class="ri ri-newspaper-fill"></i>
+                        <span>Komunitas</span>
+                    </a>
+                </li>
             <li class="nav-heading">Laporan</li>
             <li class="nav-item">
                 <a class="nav-link @if (!request()->is('admin/laporan')) collapsed @endif"
