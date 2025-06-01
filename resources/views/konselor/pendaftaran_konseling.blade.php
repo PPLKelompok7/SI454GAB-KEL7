@@ -81,77 +81,85 @@
             <input readonly type="hidden" class="form-control" id="update_id">
             <div class="row">
               <div class="col-lg-3 col-md-4 label ">Nama Konselor</div>
-              <div class="col-lg-9 col-md-8">: &nbsp; <span id="update-nama"></span></div>
+              <div class="col-lg-9 col-md-8">: &nbsp; <span id="update-nama-konselor"></span></div>
             </div>
 
             <div class="row pt-3">
               <div class="col-lg-3 col-md-4 label">Email Konselor</div>
-              <div class="col-lg-9 col-md-8">: &nbsp; <span id="update-email"></span></div>
+              <div class="col-lg-9 col-md-8">: &nbsp; <span id="update-email-konselor"></span></div>
             </div>
             <div class="row pt-3">
               <div class="col-lg-3 col-md-4 label">Gambar Konselor</div>
-              <div class="col-lg-9 col-md-8">: &nbsp; <img id="update-gambar" style="width: 250px; height: auto;margin-top:10px;"></div>
+              <div class="col-lg-9 col-md-8">: &nbsp; <img id="update-gambar-konselor" style="width: 250px; height: auto;margin-top:10px;"></div>
             </div>
             <div class="row pt-3">
               <div class="col-lg-3 col-md-4 label">Nip Konselor</div>
-              <div class="col-lg-9 col-md-8">: &nbsp; <span id="update-nip"></span></div>
+              <div class="col-lg-9 col-md-8">: &nbsp; <span id="update-nip-konselor"></span></div>
             </div>
             <div class="row pt-3">
               <div class="col-lg-3 col-md-4 label">No Telepon Konselor</div>
-              <div class="col-lg-9 col-md-8">: &nbsp; <span id="update-no_telepon"></span></div>
+              <div class="col-lg-9 col-md-8">: &nbsp; <span id="update-no_telepon-konselor"></span></div>
             </div>
             <div class="row pt-3">
               <div class="col-lg-3 col-md-4 label">Deskripsi Konselor</div>
-              <div class="col-lg-9 col-md-8">: &nbsp; <span id="update-deskripsi"></span></div>
+              <div class="col-lg-9 col-md-8">: &nbsp; <span id="update-deskripsi-konselor"></span></div>
             </div>
             <div class="row pt-3">
               <div class="col-lg-3 col-md-4 label">hari</div>
-              <div class="col-lg-9 col-md-8">: &nbsp; <span id="update-hari"></span></div>
+              <div class="col-lg-9 col-md-8">: &nbsp; <span id="update-hari-sesi"></span></div>
             </div>
             <div class="row pt-3">
               <div class="col-lg-3 col-md-4 label">Sesi</div>
-              <div class="col-lg-9 col-md-8">: &nbsp; <span id="update-sesi"></span></div>
+              <div class="col-lg-9 col-md-8">: &nbsp; <span id="update-sesi-detail"></span></div>
             </div>
             <hr>
             <h4>Data Mahasiswa</h4>
             <div class="row pt-3">
-              <div class="col-lg-3 col-md-4 label">nim</div>
-              <div class="col-lg-9 col-md-8">: &nbsp; <span id="update-nim"></span></div>
+              <div class="col-lg-3 col-md-4 label">Nama Mahasiswa</div>
+              <div class="col-lg-9 col-md-8">: &nbsp; <span id="update-nama-mahasiswa"></span></div>
             </div>
             <div class="row pt-3">
-              <div class="col-lg-3 col-md-4 label">jurusan</div>
-              <div class="col-lg-9 col-md-8">: &nbsp; <span id="update-jurusan"></span></div>
+              <div class="col-lg-3 col-md-4 label">NIM</div>
+              <div class="col-lg-9 col-md-8">: &nbsp; <span id="update-nim-mahasiswa"></span></div>
             </div>
             <div class="row pt-3">
-              <div class="col-lg-3 col-md-4 label">fakulitas</div>
-              <div class="col-lg-9 col-md-8">: &nbsp; <span id="update-fakulitas"></span></div>
+              <div class="col-lg-3 col-md-4 label">Jurusan</div>
+              <div class="col-lg-9 col-md-8">: &nbsp; <span id="update-jurusan-mahasiswa"></span></div>
             </div>
             <div class="row pt-3">
-              <div class="col-lg-3 col-md-4 label">tempat tanggal lahir</div>
-              <div class="col-lg-9 col-md-8">: &nbsp; <span id="update-tempat_tanggal_lahir"></span></div>
+              <div class="col-lg-3 col-md-4 label">Fakultas</div>
+              <div class="col-lg-9 col-md-8">: &nbsp; <span id="update-fakulitas-mahasiswa"></span></div>
             </div>
             <div class="row pt-3">
-              <div class="col-lg-3 col-md-4 label">phone</div>
-              <div class="col-lg-9 col-md-8">: &nbsp; <span id="update-phone"></span></div>
+              <div class="col-lg-3 col-md-4 label">Tempat Tanggal Lahir</div>
+              <div class="col-lg-9 col-md-8">: &nbsp; <span id="update-ttl-mahasiswa"></span></div>
             </div>
             <div class="row pt-3">
-              <div class="col-lg-3 col-md-4 label">keluhan</div>
-              <div class="col-lg-9 col-md-8">: &nbsp; <span id="update-keluhan"></span></div>
+              <div class="col-lg-3 col-md-4 label">Phone</div>
+              <div class="col-lg-9 col-md-8">: &nbsp; <span id="update-phone-mahasiswa"></span></div>
+            </div>
+            <div class="row pt-3">
+              <div class="col-lg-3 col-md-4 label">Keluhan</div>
+              <div class="col-lg-9 col-md-8">: &nbsp; <span id="update-keluhan-mahasiswa"></span></div>
             </div>       
             <div class="row pt-3">
-                <div class="col-lg-3 col-md-4 label">status</div>
-                <div class="col-lg-9 col-md-8">: &nbsp; <span id="update-status"></span></div>
+                <div class="col-lg-3 col-md-4 label">Status Konseling</div>
+                <div class="col-lg-9 col-md-8">: &nbsp; <span id="update-status-konseling"></span></div>
             </div>
             <div class="row pt-3">
-                <div class="col-lg-3 col-md-4 label">link</div>
-                <div class="col-lg-9 col-md-8">: &nbsp; <span id="update-link"></span></div>
+                <div class="col-lg-3 col-md-4 label">Link</div>
+                <div class="col-lg-9 col-md-8">: &nbsp; <span id="update-link-konseling"></span></div>
             </div>    
             <div class="col-12 pt-3">
-                <label for="yourUsername" class="form-label">Kesimpulan : &nbsp; </label>
+                <label for="update-kesimpulan" class="form-label">Kesimpulan Sesi Ini: &nbsp; </label>
                 <div class="input-group has-validation">
                   <textarea id="update-kesimpulan" required class="form-control"  rows="5" ></textarea>
                 </div>
-              </div>                                          
+            </div>
+            <hr class="mt-4">
+            <h4>Riwayat Konseling Sebelumnya</h4>
+            <div id="update-riwayat-konseling-list" class="mt-3">
+                </div>                                          
             <div class="modal-footer mt-4">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
               <button type="submit" class="btn btn-primary">Save changes</button>
@@ -166,7 +174,7 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">detail Data Pendaftaran Konseling</h5>
+          <h5 class="modal-title">Detail Data Pendaftaran Konseling</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -174,75 +182,83 @@
             <input readonly type="hidden" class="form-control" id="detail_id">
             <div class="row">
               <div class="col-lg-3 col-md-4 label ">Nama Konselor</div>
-              <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-nama"></span></div>
+              <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-nama-konselor"></span></div>
             </div>
 
             <div class="row pt-3">
               <div class="col-lg-3 col-md-4 label">Email Konselor</div>
-              <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-email"></span></div>
+              <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-email-konselor"></span></div>
             </div>
             <div class="row pt-3">
               <div class="col-lg-3 col-md-4 label">Gambar Konselor</div>
-              <div class="col-lg-9 col-md-8">: &nbsp; <img id="detail-gambar" style="width: 250px; height: auto;margin-top:10px;"></div>
+              <div class="col-lg-9 col-md-8">: &nbsp; <img id="detail-gambar-konselor" style="width: 250px; height: auto;margin-top:10px;"></div>
             </div>
             <div class="row pt-3">
               <div class="col-lg-3 col-md-4 label">Nip Konselor</div>
-              <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-nip"></span></div>
+              <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-nip-konselor"></span></div>
             </div>
             <div class="row pt-3">
               <div class="col-lg-3 col-md-4 label">No Telepon Konselor</div>
-              <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-no_telepon"></span></div>
+              <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-no_telepon-konselor"></span></div>
             </div>
             <div class="row pt-3">
               <div class="col-lg-3 col-md-4 label">Deskripsi Konselor</div>
-              <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-deskripsi"></span></div>
+              <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-deskripsi-konselor"></span></div>
             </div>
             <div class="row pt-3">
-              <div class="col-lg-3 col-md-4 label">hari</div>
-              <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-hari"></span></div>
+              <div class="col-lg-3 col-md-4 label">Hari</div>
+              <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-hari-sesi"></span></div>
             </div>
             <div class="row pt-3">
               <div class="col-lg-3 col-md-4 label">Sesi</div>
-              <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-sesi"></span></div>
+              <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-sesi-detail"></span></div>
             </div>
             <hr>
             <h4>Data Mahasiswa</h4>
             <div class="row pt-3">
-              <div class="col-lg-3 col-md-4 label">nim</div>
-              <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-nim"></span></div>
+              <div class="col-lg-3 col-md-4 label">Nama Mahasiswa</div>
+              <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-nama-mahasiswa"></span></div>
             </div>
             <div class="row pt-3">
-              <div class="col-lg-3 col-md-4 label">jurusan</div>
-              <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-jurusan"></span></div>
+              <div class="col-lg-3 col-md-4 label">NIM</div>
+              <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-nim-mahasiswa"></span></div>
             </div>
             <div class="row pt-3">
-              <div class="col-lg-3 col-md-4 label">fakulitas</div>
-              <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-fakulitas"></span></div>
+              <div class="col-lg-3 col-md-4 label">Jurusan</div>
+              <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-jurusan-mahasiswa"></span></div>
             </div>
             <div class="row pt-3">
-              <div class="col-lg-3 col-md-4 label">tempat tanggal lahir</div>
-              <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-tempat_tanggal_lahir"></span></div>
+              <div class="col-lg-3 col-md-4 label">Fakultas</div>
+              <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-fakulitas-mahasiswa"></span></div>
             </div>
             <div class="row pt-3">
-              <div class="col-lg-3 col-md-4 label">phone</div>
-              <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-phone"></span></div>
+              <div class="col-lg-3 col-md-4 label">Tempat Tanggal Lahir</div>
+              <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-ttl-mahasiswa"></span></div>
             </div>
             <div class="row pt-3">
-              <div class="col-lg-3 col-md-4 label">keluhan</div>
-              <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-keluhan"></span></div>
+              <div class="col-lg-3 col-md-4 label">Phone</div>
+              <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-phone-mahasiswa"></span></div>
+            </div>
+            <div class="row pt-3">
+              <div class="col-lg-3 col-md-4 label">Keluhan</div>
+              <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-keluhan-mahasiswa"></span></div>
             </div>                   
             <div class="row pt-3">
-              <div class="col-lg-3 col-md-4 label">status Konseling</div>
-              <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-status"></span></div>
+              <div class="col-lg-3 col-md-4 label">Status Konseling</div>
+              <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-status-konseling"></span></div>
             </div>  
             <div class="row pt-3">
-              <div class="col-lg-3 col-md-4 label">link</div>
-              <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-link"></span></div>
+              <div class="col-lg-3 col-md-4 label">Link</div>
+              <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-link-konseling"></span></div>
             </div>    
             <div class="row pt-3">
-                <div class="col-lg-3 col-md-4 label">kesimpulan</div>
-                <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-kesimpulan"></span></div>
-              </div>                      
+                <div class="col-lg-3 col-md-4 label">Kesimpulan Sesi Ini</div>
+                <div class="col-lg-9 col-md-8">: &nbsp; <span id="detail-kesimpulan-aktif"></span></div>
+            </div>
+            <hr class="mt-4">
+            <h4>Riwayat Konseling Sebelumnya</h4>
+            <div id="detail-riwayat-konseling-list" class="mt-3">
+            </div>                                                      
             <div class="modal-footer mt-4">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
               {{-- <button type="submit" class="btn btn-primary">Save changes</button> --}}
@@ -290,47 +306,80 @@
                 type: 'GET',
                 dataType: 'json',
                 success: function(data) {
-                     $('#detail_id').val(data.id);
-                     $("#detail-nama").html(data.sesi_konseling.konselor.user.name);                  
-                     $("#detail-email").html(data.sesi_konseling.konselor.user.email);                  
-                     $("#detail-gambar").attr('src', '{{ asset('storage') }}' + '/' + data.sesi_konseling.konselor.gambar);
-                     $("#detail-nip").html(data.sesi_konseling.konselor.nip);                  
-                     $("#detail-no_telepon").html(data.sesi_konseling.konselor.no_telepon);                  
-                     $("#detail-deskripsi").html(data.sesi_konseling.konselor.deskripsi);                  
-                     $("#detail-hari").html(data.sesi_konseling.hari);                  
-                     $("#detail-sesi").html(data.sesi_konseling.sesi);                  
+                    // Populate active counseling session details
+                    let pendaftaranAktif = data.pendaftaran_aktif;
+                    $('#detail_id').val(pendaftaranAktif.id);
+                    $("#detail-nama-konselor").html(pendaftaranAktif.sesi_konseling.konselor.user.name);                  
+                    $("#detail-email-konselor").html(pendaftaranAktif.sesi_konseling.konselor.user.email);                  
+                    $("#detail-gambar-konselor").attr('src', '{{ asset('storage') }}' + '/' + pendaftaranAktif.sesi_konseling.konselor.gambar);
+                    $("#detail-nip-konselor").html(pendaftaranAktif.sesi_konseling.konselor.nip);                  
+                    $("#detail-no_telepon-konselor").html(pendaftaranAktif.sesi_konseling.konselor.no_telepon);                  
+                    $("#detail-deskripsi-konselor").html(pendaftaranAktif.sesi_konseling.konselor.deskripsi);                  
+                    $("#detail-hari-sesi").html(pendaftaranAktif.sesi_konseling.hari);                  
+                    $("#detail-sesi-detail").html(pendaftaranAktif.sesi_konseling.sesi);                  
 
-                     $("#detail-nim").html(data.nim);                  
-                     $("#detail-jurusan").html(data.jurusan);                  
-                     $("#detail-fakulitas").html(data.fakulitas);                  
-                     $("#detail-tempat_tanggal_lahir").html(data.tempat_tanggal_lahir);                  
-                     $("#detail-phone").html(data.phone);                  
-                     $("#detail-keluhan").html(data.keluhan);     
-                    if (data.link) {
-                        $("#detail-link").html('<a href="' + data.link + '" target="_blank">' + data.link + '</a>');
+                    $("#detail-nama-mahasiswa").html(pendaftaranAktif.mahasiswa.name);
+                    $("#detail-nim-mahasiswa").html(pendaftaranAktif.nim);                  
+                    $("#detail-jurusan-mahasiswa").html(pendaftaranAktif.jurusan);                  
+                    $("#detail-fakulitas-mahasiswa").html(pendaftaranAktif.fakulitas);                  
+                    $("#detail-ttl-mahasiswa").html(pendaftaranAktif.tempat_tanggal_lahir);                  
+                    $("#detail-phone-mahasiswa").html(pendaftaranAktif.phone);                  
+                    $("#detail-keluhan-mahasiswa").html(pendaftaranAktif.keluhan);     
+                    if (pendaftaranAktif.link) {
+                        $("#detail-link-konseling").html('<a href="' + pendaftaranAktif.link + '" target="_blank">' + pendaftaranAktif.link + '</a>');
                     } else {
-                        $("#detail-link").html('Belum ada link');
+                        $("#detail-link-konseling").html('Belum ada link');
                     }  
-                    if (data.kesimpulan) {
-                        $("#detail-kesimpulan").html(data.kesimpulan);
+                    if (pendaftaranAktif.kesimpulan) {
+                        $("#detail-kesimpulan-aktif").html(pendaftaranAktif.kesimpulan);
                     } else {
-                        $("#detail-kesimpulan").html('Belum ada kesimpulan');
+                        $("#detail-kesimpulan-aktif").html('Belum ada kesimpulan');
                     }              
                      
                     let statusClass = 'btn ';
-                    if (data.status == 'Menunggu') {
+                    if (pendaftaranAktif.status == 'Menunggu') {
                         statusClass += 'btn-info'; 
-                    } else if (data.status == 'Terverifikasi') {
+                    } else if (pendaftaranAktif.status == 'Terverifikasi') {
                         statusClass += 'btn-warning'; 
-                    } else if (data.status == 'Selesai') {
+                    } else if (pendaftaranAktif.status == 'Selesai') {
                         statusClass += 'btn-success'; 
                     } 
-                    $('#detail-status').html(data.status) 
+                    $('#detail-status-konseling').html(pendaftaranAktif.status) 
                                       .removeClass() 
-                                      .addClass(statusClass);              
+                                      .addClass(statusClass);
+
+                    // Populate counseling history
+                    let riwayatList = $('#detail-riwayat-konseling-list');
+                    riwayatList.empty(); // Clear previous history
+                    if (data.riwayat_konseling && data.riwayat_konseling.length > 0) {
+                        data.riwayat_konseling.forEach(function(riwayat) {
+                            let tglSelesai = '';
+                            if (riwayat.updated_at) {
+                                try {
+                                    tglSelesai = new Date(riwayat.updated_at).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' });
+                                } catch (e) {
+                                    tglSelesai = riwayat.updated_at;
+                                }
+                            } else {
+                                tglSelesai = 'Tanggal tidak tersedia';
+                            }
+                            
+                            riwayatList.append('<div class="mb-3 border p-2">');
+                            riwayatList.append('<p><strong>Tanggal Selesai:</strong> ' + tglSelesai + '</p>');
+                            if (riwayat.sesi_konseling) {
+                                riwayatList.append('<p><strong>Sesi:</strong> ' + (riwayat.sesi_konseling.hari || '') + ', ' + (riwayat.sesi_konseling.sesi || '') + '</p>');
+                            }
+                            riwayatList.append('<p><strong>Keluhan:</strong> ' + (riwayat.keluhan || 'Tidak ada keluhan') + '</p>');
+                            riwayatList.append('<p><strong>Kesimpulan:</strong> ' + (riwayat.kesimpulan || 'Belum ada kesimpulan') + '</p>');
+                            riwayatList.append('</div>');
+                        });
+                    } else {
+                        riwayatList.append('<p>Tidak ada riwayat konseling sebelumnya.</p>');
+                    }
                                 },
                 error: function(xhr) {
                     console.log(xhr.responseText);
+                    alert('Gagal memuat detail. Silakan cek konsol.');
                 }
             });
         }); 
@@ -342,44 +391,78 @@
                 type: 'GET',
                 dataType: 'json',
                 success: function(data) {
-                     $('#update_id').val(data.id);
-                     $("#update-nama").html(data.sesi_konseling.konselor.user.name);                  
-                     $("#update-email").html(data.sesi_konseling.konselor.user.email);                  
-                     $("#update-gambar").attr('src', '{{ asset('storage') }}' + '/' + data.sesi_konseling.konselor.gambar);
-                     $("#update-nip").html(data.sesi_konseling.konselor.nip);                  
-                     $("#update-no_telepon").html(data.sesi_konseling.konselor.no_telepon);                  
-                     $("#update-deskripsi").html(data.sesi_konseling.konselor.deskripsi);                  
-                     $("#update-hari").html(data.sesi_konseling.hari);                  
-                     $("#update-sesi").html(data.sesi_konseling.sesi);                  
+                    // Populate active counseling session details for editing
+                    let pendaftaranAktif = data.pendaftaran_aktif;
+                    $('#update_id').val(pendaftaranAktif.id);
+                    $("#update-nama-konselor").html(pendaftaranAktif.sesi_konseling.konselor.user.name);                  
+                    $("#update-email-konselor").html(pendaftaranAktif.sesi_konseling.konselor.user.email);                  
+                    $("#update-gambar-konselor").attr('src', '{{ asset('storage') }}' + '/' + pendaftaranAktif.sesi_konseling.konselor.gambar);
+                    $("#update-nip-konselor").html(pendaftaranAktif.sesi_konseling.konselor.nip);                  
+                    $("#update-no_telepon-konselor").html(pendaftaranAktif.sesi_konseling.konselor.no_telepon);                  
+                    $("#update-deskripsi-konselor").html(pendaftaranAktif.sesi_konseling.konselor.deskripsi);                  
+                    $("#update-hari-sesi").html(pendaftaranAktif.sesi_konseling.hari);                  
+                    $("#update-sesi-detail").html(pendaftaranAktif.sesi_konseling.sesi);                  
 
-                     $("#update-nim").html(data.nim);                  
-                     $("#update-jurusan").html(data.jurusan);                  
-                     $("#update-fakulitas").html(data.fakulitas);                  
-                     $("#update-tempat_tanggal_lahir").html(data.tempat_tanggal_lahir);                  
-                     $("#update-phone").html(data.phone);                  
-                     $("#update-keluhan").html(data.keluhan);                  
-                     if (data.link) {
-                        $("#update-link").html('<a href="' + data.link + '" target="_blank">' + data.link + '</a>');
+                    $("#update-nama-mahasiswa").html(pendaftaranAktif.mahasiswa.name);
+                    $("#update-nim-mahasiswa").html(pendaftaranAktif.nim);                  
+                    $("#update-jurusan-mahasiswa").html(pendaftaranAktif.jurusan);                  
+                    $("#update-fakulitas-mahasiswa").html(pendaftaranAktif.fakulitas);                  
+                    $("#update-ttl-mahasiswa").html(pendaftaranAktif.tempat_tanggal_lahir);                  
+                    $("#update-phone-mahasiswa").html(pendaftaranAktif.phone);                  
+                    $("#update-keluhan-mahasiswa").html(pendaftaranAktif.keluhan);                  
+                    if (pendaftaranAktif.link) {
+                        $("#update-link-konseling").html('<a href="' + pendaftaranAktif.link + '" target="_blank">' + pendaftaranAktif.link + '</a>');
                     } else {
-                        $("#update-link").html('Belum ada link');
+                        $("#update-link-konseling").html('Belum ada link');
                     }  
                      
-                     let statusClass = 'btn ';
-                    if (data.status == 'Menunggu') {
+                    let statusClass = 'btn ';
+                    if (pendaftaranAktif.status == 'Menunggu') {
                         statusClass += 'btn-info'; 
-                    } else if (data.status == 'Terverifikasi') {
+                    } else if (pendaftaranAktif.status == 'Terverifikasi') {
                         statusClass += 'btn-warning'; 
-                    } else if (data.status == 'Selesai') {
+                    } else if (pendaftaranAktif.status == 'Selesai') {
                         statusClass += 'btn-success'; 
                     } 
-                    $('#update-status').html(data.status) 
+                    $('#update-status-konseling').html(pendaftaranAktif.status) 
                                       .removeClass() 
                                       .addClass(statusClass);  
 
-                     $("#update-kesimpulan").val(data.kesimpulan);                                                                      
+                    $("#update-kesimpulan").val(pendaftaranAktif.kesimpulan);  
+
+                    // Populate counseling history
+                    let riwayatListEdit = $('#update-riwayat-konseling-list');
+                    riwayatListEdit.empty(); // Clear previous history
+                    if (data.riwayat_konseling && data.riwayat_konseling.length > 0) {
+                        data.riwayat_konseling.forEach(function(riwayat) {
+                            let tglSelesai = '';
+                            if (riwayat.updated_at) {
+                                try {
+                                    tglSelesai = new Date(riwayat.updated_at).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' });
+                                } catch (e) {
+                                    tglSelesai = riwayat.updated_at;
+                                }
+                            } else {
+                                tglSelesai = 'Tanggal tidak tersedia';
+                            }
+                            
+                            riwayatListEdit.append('<div class="mb-3 border p-2">');
+                            riwayatListEdit.append('<p><strong>Tanggal Selesai:</strong> ' + tglSelesai + '</p>');
+                            if (riwayat.sesi_konseling) {
+                                riwayatListEdit.append('<p><strong>Sesi:</strong> ' + (riwayat.sesi_konseling.hari || '') + ', ' + (riwayat.sesi_konseling.sesi || '') + '</p>');
+                            }
+                            riwayatListEdit.append('<p><strong>Keluhan:</strong> ' + (riwayat.keluhan || 'Tidak ada keluhan') + '</p>');
+                            riwayatListEdit.append('<p><strong>Kesimpulan:</strong> ' + (riwayat.kesimpulan || 'Belum ada kesimpulan') + '</p>');
+                            riwayatListEdit.append('</div>');
+                        });
+                    } else {
+                        riwayatListEdit.append('<p>Tidak ada riwayat konseling sebelumnya.</p>');
+                    }
+                                                                                      
                     },
                 error: function(xhr) {
                     console.log(xhr.responseText);
+                    alert('Gagal memuat data untuk edit. Silakan cek konsol.');
                 }
             });
         });    

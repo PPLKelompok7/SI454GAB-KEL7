@@ -61,14 +61,42 @@ class DashboardController extends Controller
 
     public function pendaftaran_konseling_konselor_show($id)
     {
-        $data = PendaftaranKonseling::with('sesiKonseling.konselor.user','mahasiswa')->find($id);
-        // dd($data);
-        return response()->json($data);
+        $pendaftaranAktif = PendaftaranKonseling::with('sesiKonseling.konselor.user','mahasiswa')->findOrFail($id);
+        
+        $riwayatKonseling = PendaftaranKonseling::where('mahasiswa_id', $pendaftaranAktif->mahasiswa_id)
+                                               ->where('id', '!=', $id) // Kecualikan pendaftaran saat ini
+                                               ->where('status', 'Selesai')
+                                               ->whereNotNull('kesimpulan')
+                                               ->orderBy('updated_at', 'desc')
+                                               ->get(['id', 'updated_at', 'kesimpulan', 'keluhan', 'sesi_konseling_id']);
+
+        // Untuk mendapatkan detail sesi dari riwayat (opsional, jika butuh info sesi seperti tanggal/hari)
+        $riwayatKonseling->load('sesiKonseling:id,hari,sesi');
+
+
+        return response()->json([
+            'pendaftaran_aktif' => $pendaftaranAktif,
+            'riwayat_konseling' => $riwayatKonseling
+        ]);
     }
     public function pendaftaran_konseling_konselor_edit($id)
     {
-        $data = PendaftaranKonseling::with('sesiKonseling.konselor.user','mahasiswa')->find($id);
-        return response()->json($data);
+        $pendaftaranAktif = PendaftaranKonseling::with('sesiKonseling.konselor.user','mahasiswa')->findOrFail($id);
+
+        $riwayatKonseling = PendaftaranKonseling::where('mahasiswa_id', $pendaftaranAktif->mahasiswa_id)
+                                               ->where('id', '!=', $id) // Kecualikan pendaftaran saat ini
+                                               ->where('status', 'Selesai')
+                                               ->whereNotNull('kesimpulan')
+                                               ->orderBy('updated_at', 'desc')
+                                               ->get(['id', 'updated_at', 'kesimpulan', 'keluhan', 'sesi_konseling_id']);
+        
+        // Untuk mendapatkan detail sesi dari riwayat (opsional, jika butuh info sesi seperti tanggal/hari)
+        $riwayatKonseling->load('sesiKonseling:id,hari,sesi');
+
+        return response()->json([
+            'pendaftaran_aktif' => $pendaftaranAktif,
+            'riwayat_konseling' => $riwayatKonseling
+        ]);
     }
     public function pendaftaran_konseling_konselor_update($id, Request $request)
     {

@@ -14,7 +14,7 @@
                         <div class="container">
                             <div class="row justify-content-start">
                                 <div class="col-lg-8">
-                                    <p class="d-inline-block border border-white rounded text-danger fw-semi-bold py-1 px-3 animated slideInDown">Welcome to EmoWell</p>
+                                    <p class="d-inline-block border border-white rounded text-danger fw-semi-bold py-1 px-3 animated slideInDown">Welcome to konseling mahasiswa</p>
                                     <h1 class="display-3 mb-4 animated slideInDown">Konseling: Untuk Keseimbangan Akademik dan Kehidupan Pribadi</h1>
                                     {{-- <a href="{{url('/')}}" class="btn btn-danger py-3 px-5 animated slideInDown">Explore More</a> --}}
                                 </div>
@@ -28,7 +28,7 @@
                         <div class="container">
                             <div class="row justify-content-start">
                                 <div class="col-lg-7">
-                                    <p class="d-inline-block border border-white rounded text-danger fw-semi-bold py-1 px-3 animated slideInDown">Welcome to EmoWell</p>
+                                    <p class="d-inline-block border border-white rounded text-danger fw-semi-bold py-1 px-3 animated slideInDown">Welcome to konseling mahasiswa</p>
                                     <h1 class="display-3 mb-4 animated slideInDown">Konseling untuk Menyusun Rencana, <br> Mengatasi Kesulitan, dan Mencapai Sukses</h1>
                                 </div>
                             </div>

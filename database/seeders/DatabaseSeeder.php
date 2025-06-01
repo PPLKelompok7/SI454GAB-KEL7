@@ -15,5 +15,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        
+        // Jalankan KonselorSeeder
+        $this->call([
+            KonselorSeeder::class,
+        ]);
     }
 }
