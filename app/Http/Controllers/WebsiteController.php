@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Konselor;
-use App\Models\PendaftaranKonseling;
-use App\Models\SesiKonseling;
 use App\Models\User;
+use App\Models\Article;
+use App\Models\Konselor;
 use Illuminate\Http\Request;
+use App\Models\SesiKonseling;
+use App\Models\PendaftaranKonseling;
 
 class WebsiteController extends Controller
 {
@@ -31,6 +32,26 @@ class WebsiteController extends Controller
     {
         $sesi_konseling = SesiKonseling::get();
         return view('website.sesi_konseling',compact('sesi_konseling'));
+
+        
+    }
+
+    public function search(Request $request)
+    {
+        $query = SesiKonseling::with('konselor.user');
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->whereHas('konselor.user', function($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%");
+            })
+            ->orWhere('hari', 'like', "%{$search}%")
+            ->orWhere('sesi', 'like', "%{$search}%");
+        }
+
+        $sesi_konseling = $query->get();
+
+        return view('website.sesi_konseling', compact('sesi_konseling'));
     }
 
     public function sesi_konseling_detail($id)
@@ -70,4 +91,21 @@ class WebsiteController extends Controller
         return redirect('/')->with('success', 'Pendaftaran konseling berhasil ditambahkan!');
    
     }
+
+    
+    // public function article() {
+    //     $articles = Article::all(); // Ambil semua data artikel
+    //     return view('website.article-list', compact('articles'));
+    // }
+
+    public function article() {
+        $articles = Article::latest()->get();
+        return view('website.article-list', compact('articles'));
+    }
+
+    public function showArticle($id) {
+        $article = Article::findOrFail($id);
+        return view('website.article-detail-content', compact('article'));
+    }
+
 }

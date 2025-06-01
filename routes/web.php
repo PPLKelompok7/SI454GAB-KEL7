@@ -1,8 +1,13 @@
 <?php
 
+use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\KonselorController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SesiKonselingController;
 use App\Http\Controllers\PendaftaranKonselingController;
@@ -23,20 +28,28 @@ use App\Http\Controllers\PendaftaranKonselingController;
 // });
 
 
-Route::get('/login', [App\Http\Controllers\LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/login_post', [App\Http\Controllers\LoginController::class, 'authenticate']);
-Route::get('/logout', [App\Http\Controllers\LoginController::class, 'logout']);
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login_post', [LoginController::class, 'authenticate']);
+Route::get('/logout', [LoginController::class, 'logout']);
 
-Route::get('/register', [App\Http\Controllers\RegisterController::class, 'index'])->middleware('guest');
-Route::post('/register', [App\Http\Controllers\RegisterController::class, 'store']);
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store']);
 
 
 
-Route::get('/', [App\Http\Controllers\WebsiteController::class, 'index']);
-Route::get('/konselor', [App\Http\Controllers\WebsiteController::class, 'konselor']);
-Route::get('/sesi_konseling', [App\Http\Controllers\WebsiteController::class, 'sesi_konseling']);
-Route::get('/sesi_konseling/{id}', [App\Http\Controllers\WebsiteController::class, 'sesi_konseling_detail']);
-Route::post('/sesi_konseling_post', [App\Http\Controllers\WebsiteController::class, 'sesi_konseling_post']);
+Route::get('/', [WebsiteController::class, 'index']);
+Route::get('/konselor', [WebsiteController::class, 'konselor']);
+Route::get('/sesi_konseling', [WebsiteController::class, 'sesi_konseling']);
+Route::get('/sesi_konseling/{id}', [WebsiteController::class, 'sesi_konseling_detail']);
+Route::post('/sesi_konseling_post', [WebsiteController::class, 'article']);
+
+//article
+Route::get('/article', [WebsiteController::class, 'article']);
+Route::get('/article/{id}', [WebsiteController::class, 'showArticle'])->name('website.article.detail');
+
+//route search
+Route::get('/sesi_konseling', [WebsiteController::class, 'search']);
+
 
 
 // Route Mahasiswa
@@ -47,7 +60,16 @@ Route::group(['middleware' => ['is_mahasiswa']], function () {
     Route::get('/mahasiswa/pendaftaran_konseling/detail/{id}', [DashboardController::class, 'pendaftaran_konseling_mahasiswa_show']);
     Route::resource('feedback', FeedbackController::class)->middleware('auth');
     Route::resource('izin', SuratIzinSakitController::class)->middleware('auth');
+    // Diary routes
+    Route::get('/mahasiswa/diary', [App\Http\Controllers\DiaryController::class, 'index'])->name('diary.index');
+    Route::post('/mahasiswa/diary', [App\Http\Controllers\DiaryController::class, 'store'])->name('diary.store');
+    Route::get('/mahasiswa/diary/{id}', [App\Http\Controllers\DiaryController::class, 'show'])->name('diary.show');
+    Route::get('/mahasiswa/diary/{id}/edit', [App\Http\Controllers\DiaryController::class, 'edit'])->name('diary.edit');
+    Route::put('/mahasiswa/diary/{id}', [App\Http\Controllers\DiaryController::class, 'update'])->name('diary.update');
+    Route::delete('/mahasiswa/diary/{id}', [App\Http\Controllers\DiaryController::class, 'destroy'])->name('diary.destroy');
+
 });
+
 
 // Route Konselor
 Route::group(['middleware' => ['is_konselor']], function () {
@@ -62,7 +84,6 @@ Route::group(['middleware' => ['is_konselor']], function () {
 });
 
 // Route Admin
-// Route admin
 Route::group(['middleware' => ['is_admin']], function () {
     Route::get('/admin/dashboard', [DashboardController::class, 'index']);
 
@@ -103,3 +124,11 @@ Route::group(['middleware' => ['is_admin']], function () {
 });
 
 });
+
+    Route::get('admin/article', [ArticleController::class, 'index'])->name('article.index');
+    Route::get('admin/article-add', [ArticleController::class, 'add'])->name('article.add');
+    Route::post('admin/article-add', [ArticleController::class, 'store'])->name('article.store');
+    Route::get('admin/article/{id}/edit', [ArticleController::class, 'edit'])->name('article.edit');
+    Route::put('admin/article/{id}', [ArticleController::class, 'update'])->name('article.update');
+    Route::delete('admin/article/{id}', [ArticleController::class, 'destroy'])->name('article.destroy');
+    Route::get('admin/article/{id}', [ArticleController::class, 'show'])->name('article.show');

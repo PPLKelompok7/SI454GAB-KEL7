@@ -18,41 +18,47 @@
             <p class="d-inline-block border rounded text-danger fw-semi-bold py-1 px-3">Sesi Konseling</p>
             <h1 class="display-5 mb-5">Sesi Konseling!</h1>
         </div>
-        <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.3s">
+
+        <form method="GET" action="{{ url('sesi_konseling') }}" class="mb-4 text-center">
+            <div class="input-group" style="max-width: 600px; margin: 0 auto;">
+                <input type="text" name="search" class="form-control" placeholder="Cari berdasarkan nama konselor, hari, atau sesi..." value="{{ request('search') }}">
+                <button class="btn btn-primary" type="submit">Cari</button>
+            </div>
+        </form>
+
+        <div class="row">
             @foreach ($sesi_konseling as $value)                    
-                <div class="testimonial-item">
-                    <div class="testimonial-text border rounded p-4 pt-5 mb-5" >
-                        <div class="btn-square bg-white border rounded-circle">
-                            <i class="fa fa-user fa-2x text-danger"></i>
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-item h-100 border rounded p-4">
+                        <div class="text-center mb-3">
+                            <img class="rounded-circle mb-2" src="{{ asset('storage/'.$value->konselor->gambar) }}" alt="" style="width: 150px; height: 150px; object-fit: cover;">
+                            <h5 class="mt-2">{{ $value->konselor->user->name }}</h5>
                         </div>
-                        <div class="row" style="font-weight: bold">
-                            <div class="col-lg-3 col-md-4 label ">Nama</div>
-                            <div class="col-lg-9 col-md-8">: &nbsp; {{ $value->konselor->user->name }}</div>
+                        <div class="row fw-bold mb-1">
+                            <div class="col-4">Nama</div>
+                            <div class="col-8">: {{ $value->konselor->user->name }}</div>
                         </div>
-                        <div class="row" style="font-weight: bold">
-                            <div class="col-lg-3 col-md-4 label ">hari</div>
-                            <div class="col-lg-9 col-md-8">: &nbsp; {{ $value->hari }}</div>
+                        <div class="row fw-bold mb-1">
+                            <div class="col-4">Hari</div>
+                            <div class="col-8">: {{ $value->hari }}</div>
                         </div>
-                        <div class="row" style="font-weight: bold">
-                            <div class="col-lg-3 col-md-4 label ">sesi</div>
-                            <div class="col-lg-9 col-md-8">: &nbsp; {{ $value->sesi }}</div>
-                        </div>                           
+                        <div class="row fw-bold mb-3">
+                            <div class="col-4">Sesi</div>
+                            <div class="col-8">: {{ $value->sesi }}</div>
+                        </div>
+                        <div class="text-center">
+                            @if ($value->status == "Terisi")
+                                <span class="text-warning fw-bold">Terisi</span>
+                            @else
+                                <span class="text-success fw-bold">Tersedia</span><br>
+                                <a href="{{ url('sesi_konseling/'.$value->id) }}" class="btn btn-primary btn-sm mt-2">Ambil Sesi Ini!</a>
+                            @endif
+                        </div>
                     </div>
-                    <img class="rounded-circle mb-3" src="{{ asset('storage/'.$value->konselor->gambar) }}" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%;">
-                    <h4>{{ $value->konselor->user->name }}</h4>
-                    <span>
-                    @if ($value->status == "Terisi")
-                        <span class="text-warning fw-bold">Terisi</span>
-                    @else
-                        <span class="text-success fw-bold">Tersedia</span>   <br>
-                        <span class="btn btn-primary mt-2"> <a href="{{ url('sesi_konseling/'.$value->id) }}" style="color: white;" >Ambil Sesi Ini!</a></span>                      
-                    @endif
-                    </span>
                 </div>
             @endforeach
-
-            
         </div>
+
     </div>
 </div>
 @endsection
