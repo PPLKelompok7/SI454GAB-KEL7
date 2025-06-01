@@ -3,17 +3,14 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\User;
 
 use App\Models\Webinar;
 
 use App\Models\Article;
 use App\Models\Konselor;
 
-use Illuminate\Http\Request;
 use App\Models\SesiKonseling;
 use App\Models\PendaftaranKonseling;
-use App\Models\SesiKonseling;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -90,7 +87,6 @@ class WebsiteController extends Controller
         }
 
         return redirect('/')->with('success', 'Pendaftaran konseling berhasil ditambahkan!');
-   
     }
 
 
