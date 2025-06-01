@@ -45,6 +45,8 @@ Route::group(['middleware' => ['is_mahasiswa']], function () {
 
     Route::get('/mahasiswa/pendaftaran_konseling', [DashboardController::class, 'pendaftaran_konseling_mahasiswa_index']);
     Route::get('/mahasiswa/pendaftaran_konseling/detail/{id}', [DashboardController::class, 'pendaftaran_konseling_mahasiswa_show']);
+    Route::resource('feedback', FeedbackController::class)->middleware('auth');
+    Route::resource('izin', SuratIzinSakitController::class)->middleware('auth');
 });
 
 // Route Konselor
@@ -94,5 +96,10 @@ Route::group(['middleware' => ['is_admin']], function () {
     Route::get('/admin/laporan', [DashboardController::class, 'laporan']);
     Route::get('/admin/laporan/export/{id}', [DashboardController::class, 'laporan_export']);
 
+    Route::middleware(['auth', 'admin'])->group(function() {
+    Route::get('admin/izin', [SuratIzinSakitController::class, 'adminIndex'])->name('izin.admin');
+    Route::post('admin/izin/{id}/approve', [SuratIzinSakitController::class, 'approve'])->name('izin.approve');
+    Route::post('admin/izin/{id}/reject', [SuratIzinSakitController::class, 'reject'])->name('izin.reject');
+});
 
 });
