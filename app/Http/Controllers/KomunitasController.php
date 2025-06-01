@@ -5,103 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Komunitas;
 use App\Models\Komunitas_komentar;
 use Illuminate\Http\Request;
-use App\Models\Konselor;
-use App\Models\User;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Auth;
 
-class KonselorController extends Controller
+use function PHPSTORM_META\map;
+
+class KomunitasController extends Controller
 {
-    public function index()
-    {
-        $konselor = Konselor::get();
-        $user = User::where('is_role',"Konselor")->get();
-
-        return view('admin.konselor.index',compact('konselor','user'));
-    }
-
-    public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-
-            'user_id' => 'required',
-            'nip' => 'required',
-            'no_telepon' => 'required',
-            'deskripsi' => 'required',
-            'gambar' => 'required|image',
-            
-        ]);
-
-        if ($request->deskripsi) {
-            $validatedData['deskripsi'] = nl2br($request->deskripsi);
-        }
-
-        if ($request->hasFile('gambar')) {
-            $validatedData['gambar'] = $request->file('gambar')->store('img-foto-konselor');
-        }
-
-        Konselor::create($validatedData);
-
-        return response()->json(['message' => 'Data created successfully']);
-    }
-    public function show($id)
-    {
-        $data = Konselor::with('user')->find($id);
-        return response()->json($data);
-    }
-    public function edit($id)
-    {
-        $data = Konselor::find($id);
-        return response()->json($data);
-    }
-    public function update($id, Request $request)
-    {
-        $konselor = Konselor::findOrFail($id); 
-
-
-        $validatedData = $request->validate([
-            'user_id' => 'required',
-            'nip' => 'required',
-            'no_telepon' => 'required',
-            'deskripsi' => 'required',
-            'gambar' => 'nullable|image',
-        ]);
-
-        if ($request->deskripsi) {
-            $validatedData['deskripsi'] = nl2br($request->deskripsi);
-        }
-
-        if ($request->hasFile('gambar')) {
-            if ($konselor->gambar) {
-                Storage::delete($konselor->gambar);
-            }
-            $validatedData['gambar'] = $request->file('gambar')->store('img-foto-konselor');
-        }
-
-        $konselor->update($validatedData);
-
-        return response()->json(['message' => 'Data Updated successfully']);
-    }
-
-    
-    public function destroy($id)
-    {
-        $konselor = Konselor::find($id);
-        if ($konselor->gambar) {
-            Storage::delete($konselor->gambar);
-        }
-        $konselor->delete();
-        return response()->json(['message' => 'Data deleted successfully']);
-    }   
-
-    public function komunitas(){
+    public function index(){
         $data = [
             'page_title' => 'Komunitas',
             'sub_title' => 'Daftar Komunitas',
             'komunitas' => Komunitas::get(),
         ];
 
-        return view('konselor.komunitas.index', $data);
+        return view('admin.komunitas.index', $data);
     }
 
     public function tambahKomunitas(){
@@ -111,7 +27,7 @@ class KonselorController extends Controller
             'komunitas' => Komunitas::get(),
         ];
 
-        return view('konselor.komunitas.tambah-komunitas', $data);
+        return view('admin.komunitas.tambah-komunitas', $data);
     }
 
     public function editKomunitas($id_komunitas){
@@ -122,7 +38,7 @@ class KonselorController extends Controller
         ];
 
         // dd($data);
-        return view('konselor.komunitas.edit-komunitas', $data);
+        return view('admin.komunitas.edit-komunitas', $data);
     }
 
     public function storeKomunitas(Request $request){
@@ -220,20 +136,6 @@ class KonselorController extends Controller
         ];
 
         // dd($data);
-        return view('konselor.komunitas.read-komunitas', $data);
-    }
-
-    public function doKomentar(Request $request){
-        $insert = Komunitas_komentar::create([
-            'id_komunitas' => $request->input('id_komunitas'),
-            'id_user' => Auth::user()->id,
-            'komentar' => $request->input('komentar')
-        ]);
-
-        if($insert){
-            return response()->json(['status' => true]);
-        } else {
-            return response()->json(['status' => false]);
-        }
+        return view('admin.komunitas.read-komunitas', $data);
     }
 }
