@@ -8,7 +8,7 @@
     <title>Konseling Mahasiswa</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
         /* *{
             text-transform: capitalize;
@@ -16,6 +16,9 @@
     </style>
     <!-- Favicons -->
     {{-- <link href="{{asset('template_admin')}}/assets/img/favicon.png" rel="icon"> --}}
+    <!-- Font Awesome CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
     <link rel="shortcut icon" href="{{ asset('template-pinterest') }}/docs/assets/img/logo.png" type="image/x-icon">
 
     <link href="{{ asset('template_admin') }}/img/favicon.ico" rel="icon">
