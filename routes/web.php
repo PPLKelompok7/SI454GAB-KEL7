@@ -1,10 +1,8 @@
 <?php
 
-use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\KonselorController;
 use App\Http\Controllers\RegisterController;
@@ -72,15 +70,7 @@ Route::get('/', [WebsiteController::class, 'index']);
 Route::get('/konselor', [WebsiteController::class, 'konselor']);
 Route::get('/sesi_konseling', [WebsiteController::class, 'sesi_konseling']);
 Route::get('/sesi_konseling/{id}', [WebsiteController::class, 'sesi_konseling_detail']);
-Route::post('/sesi_konseling_post', [WebsiteController::class, 'article']);
-
-//article
-Route::get('/article', [WebsiteController::class, 'article']);
-Route::get('/article/{id}', [WebsiteController::class, 'showArticle'])->name('website.article.detail');
-
-//route search
-Route::get('/sesi_konseling', [WebsiteController::class, 'search']);
-
+Route::post('/sesi_konseling_post', [WebsiteController::class, 'sesi_konseling_post']);
 
 
 
@@ -163,6 +153,7 @@ Route::group(['middleware' => ['is_admin']], function () {
 
     Route::get('/admin/laporan', [DashboardController::class, 'laporan']);
     Route::get('/admin/laporan/export/{id}', [DashboardController::class, 'laporan_export']);
+
     
     Route::get('admin/article', [ArticleController::class, 'index'])->name('article.index');
     Route::get('admin/article-add', [ArticleController::class, 'add'])->name('article.add');

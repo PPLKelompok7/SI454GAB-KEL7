@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\User;
 
 use App\Models\Webinar;
@@ -12,6 +13,9 @@ use App\Models\Konselor;
 use Illuminate\Http\Request;
 use App\Models\SesiKonseling;
 use App\Models\PendaftaranKonseling;
+use App\Models\SesiKonseling;
+use App\Models\User;
+use Illuminate\Http\Request;
 
 class WebsiteController extends Controller
 {
@@ -37,26 +41,6 @@ class WebsiteController extends Controller
     {
         $sesi_konseling = SesiKonseling::get();
         return view('website.sesi_konseling',compact('sesi_konseling'));
-
-        
-    }
-
-    public function search(Request $request)
-    {
-        $query = SesiKonseling::with('konselor.user');
-
-        if ($request->filled('search')) {
-            $search = $request->search;
-            $query->whereHas('konselor.user', function($q) use ($search) {
-                $q->where('name', 'like', "%{$search}%");
-            })
-            ->orWhere('hari', 'like', "%{$search}%")
-            ->orWhere('sesi', 'like', "%{$search}%");
-        }
-
-        $sesi_konseling = $query->get();
-
-        return view('website.sesi_konseling', compact('sesi_konseling'));
     }
 
     public function sesi_konseling_detail($id)
@@ -72,6 +56,9 @@ class WebsiteController extends Controller
 
     public function sesi_konseling_post(Request $request)
     {
+        // Debug: Log all request data
+        \Log::info('Form submission data:', $request->all());
+        
         $validatedData = $request->validate([
             'sesi_konseling_id' => 'required',
             'nim' => 'required',
@@ -83,9 +70,18 @@ class WebsiteController extends Controller
             
         ]);
 
+        // Debug: Log validated data
+        \Log::info('Validated data:', $validatedData);
+
         $validatedData['mahasiswa_id'] = auth()->user()->id;
 
-        PendaftaranKonseling::create($validatedData);
+        // Debug: Log data being saved
+        \Log::info('Data being saved:', $validatedData);
+
+        $pendaftaran = PendaftaranKonseling::create($validatedData);
+        
+        // Debug: Log created record
+        \Log::info('Created pendaftaran:', $pendaftaran->toArray());
 
         $sesiKonseling = SesiKonseling::find($validatedData['sesi_konseling_id']);
         if ($sesiKonseling) {
@@ -96,6 +92,7 @@ class WebsiteController extends Controller
         return redirect('/')->with('success', 'Pendaftaran konseling berhasil ditambahkan!');
    
     }
+
 
 
 
